@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Z前端 - chrome 的debug模式：network 的 Timing 说明</title>
+</head>
+<body>
+<div class="cont">
+    <h1>chrome 的debug模式： network 的 Timing 说明</h1>
+    <p>当我们在输入一个网址，获取网页内容时所需耗费的时间，比如响应慢，页面加载慢的原因是什么？</p>
+    <ul>
+        <li>Queued at: 排队时间</li>
+        <li>Started at: 开始执行时间</li>
+        <li>(Resource Scheduling)Queueing: 等待时长
+        </li>
+        <li>(Connection Start)<li>
+        <li>
+            Stalled :阻塞时长 - 从TCP连接建立完成，到真正可以传输数据之间的时间差
+            <br>
+            浏览器对同一个主机域名的并发连接数有限制，因此如果当前的连接数已经超过上限，那么其余请求就会被阻塞，等待新的可用连接；此外脚本也会阻塞其他组件的下载；
+        </li>
+        <li>
+            DNS Lookup :域名解析 -  <br>
+            　请求某域名下的资源，浏览器需要先通过DNS解析器得到该域名服务器的IP地址。在DNS查找完成之前，浏览器不能从主机名那里下载到任何东西。
+        </li>
+        <li>
+            Initial connection :初始化连接 - 　TCP建立连接的三次握手时间
+        </li>
+        <li>
+            SSL : 包含于HTTPS连接中:
+            <br>
+            http是超文本传输协议，以明文方式发送内容，不提供任何方式的数据加密，如果被不法分子截取浏览器和服务器之间的传输报文，会获取其中的信息。
+
+            　　https 是安全套接字层超文本传输协议，就是在HTTP的基础上加入了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密。
+
+            　　因此建立HTTPS连接的时间相当于三次握手的时间+SSL时间。
+        </li>
+        <li>Request/Response - 请求/响应</li>
+        <li>Request sent: 请求第一个字节发出前到最后一个字节发出后的时间，也就是上传时间</li>
+        <li>Waiting (TTFB):
+            发送请求完毕到接收请求开始的时间。
+            这个时间段就代表服务器处理和返回数据网络延时时间了。服务器优化的目的就是要让这个时间段尽可能短。 </li>
+        <li>Content Download / Downloading: 接收数据时间，就是下载时间</li>
+    </ul>
+</div>
+<p>chrome 的debug模式： network 的 Timing 说明</p>
+<p>静态资源的请求：html, js, css, image</p>
+<ul>
+    <li>Queued at: 排队时间</li>
+    <li>Started at: 开始执行时间</li>
+    <li>(Resource Scheduling)Queueing: 等待时长
+    </li>
+    <li>(Connection Start)<li>
+    <li>
+        Stalled :阻塞时长 - 从TCP连接建立完成，到真正可以传输数据之间的时间差
+    <br>
+    浏览器对同一个主机域名的并发连接数有限制，因此如果当前的连接数已经超过上限，那么其余请求就会被阻塞，等待新的可用连接；此外脚本也会阻塞其他组件的下载；
+    </li>
+    <li>
+        DNS Lookup :域名解析 -  <br>
+        　请求某域名下的资源，浏览器需要先通过DNS解析器得到该域名服务器的IP地址。在DNS查找完成之前，浏览器不能从主机名那里下载到任何东西。
+    </li>
+    <li>
+        Initial connection :初始化连接 - 　TCP建立连接的三次握手时间
+    </li>
+    <li>
+        SSL : 包含于HTTPS连接中:
+        <br>
+        http是超文本传输协议，以明文方式发送内容，不提供任何方式的数据加密，如果被不法分子截取浏览器和服务器之间的传输报文，会获取其中的信息。
+
+        　　https 是安全套接字层超文本传输协议，就是在HTTP的基础上加入了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密。
+
+        　　因此建立HTTPS连接的时间相当于三次握手的时间+SSL时间。
+    </li>
+    <li>Request/Response - 请求/响应</li>
+    <li>Request sent: 请求第一个字节发出前到最后一个字节发出后的时间，也就是上传时间</li>
+    <li>Waiting (TTFB):
+        发送请求完毕到接收请求开始的时间。
+        这个时间段就代表服务器处理和返回数据网络延时时间了。服务器优化的目的就是要让这个时间段尽可能短。 </li>
+    <li>Content Download / Downloading: 接收数据时间，就是下载时间</li>
+</ul>
+<p>资料查询出处：</p>
+<ul>
+    <li><a href="https://www.cnblogs.com/zhenwen/p/5827925.html">Chrome浏览器Network面板http请求时间分析</a></li>
+    <li><a href="https://blog.csdn.net/chenxiaodan_danny/article/details/40821083">Chrome DEBUG network 的Timing说明</a></li>
+</ul>
+</body>
+</html>

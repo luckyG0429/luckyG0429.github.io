@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initical-scale=1.0">
+    <title>文章列表</title>
+    <link rel="stylesheet" href="./static/css/201812/mediaType.css"/>
+    <link rel="stylesheet" href="./static/css/list.css"/>
+</head>
+<body>
+<header class="top">
+    <div class="toplist">
+        <a href="#">文字列表</a>
+        <a href="#">小站地图</a>
+        <a href="#">demo|小工具</a>
+        <a href="#">其他</a>
+    </div>
+</header>
+<div class="cont">
+    <iframe id="contentlist" src="./web/demo1.html"></iframe>
+    <div class="listmeun">
+        <span class="it">工作随记</span>
+        <span class="it">读书笔记</span>
+        <span class="it">学习理财</span>
+    </div>
+</div>
+<a href="http://www.jq22.com/jquery-info16288">效果参考</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    window.onload=function(){
+        var windHeight = window.innerHeight,
+            _topH = parseFloat($('header').height()),
+            _bottomH = parseFloat($('header').height())
+        $('iframe#contentlist').height(windHeight -_topH - _bottomH - 4)
+        
+        
+        $('span.it').click(function () {
+            var k = this.innerHTML, urlH5;
+            if(k == '读书笔记') {
+                urlH5 = './read/index.html'
+            }else if(k == '工作随记'){
+                urlH5 = './web/ul.html'
+            }else{
+                urlH5 = './self/demo.html'
+            }
+            $('iframe#contentlist').attr('src', urlH5);
+        })
+    }
+</script>
+</body>
+</html>

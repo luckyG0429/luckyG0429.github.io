@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>检测移动设备的信息</title>
+</head>
+<body>
+<div>
+    最近在做一个风控相关的项目，要获取手机的一些基本设备信息。通过度娘的获取到资料，我整理并进行实践了一下。
+    1. js可以获取到手机的哪些信息？
+    2. 要怎么获取？
+</div>
+<div>
+    <a href="https://blog.csdn.net/xiejunna/article/details/53086355">html5+ 设备管理信息 - device</a>
+    这篇标题成功的骗到我。我以为所有的字段都可以拿到，结果才知道有一个 H5+ 的SDK, 用来做H5APP的， 可以实现一下列表功能 。
+    <ul>
+        <li>imes： 设备的国际移动设备身份码</li>
+        <li>系统： 设备的国际移动用户识别码</li>
+        <li>model: 设备的型号</li>
+        <li>vendor: 设备的生成厂商</li>
+        <li>uuid: 设备的唯一标识</li>
+    </ul>
+    <ul>
+        <li>dial: 拨打电话</li>
+        <li>beep: 发出蜂鸣声</li>
+        <li>vibrate: 设备振动</li>
+        <li>setWakelock: 设置应用是否保持唤醒（屏幕常亮）状态</li>
+        <li>isWakelock: 获取程序是否一直保持唤醒（屏幕常亮）状态</li>
+        <li>setVolume: 设置设备的系统音量</li>
+        <li>getVolume: 获取设备的系统音量</li>
+    </ul>
+    <p>但是如果你是要找js的实现方式，请继续</p>
+</div>
+<div>
+    <h3>Navigator 接口表示用户代理的状态和标识。 它允许脚本查询它和注册自己进行一些活动</h3>
+    <p></p>
+    <p>设备类型：</p>
+</div>
+
+<script>
+    if(window.navigator){
+        console.log(window.navigator.appVersion)
+        console.log(window.navigator.userAgent)
+        console.log(window.navigator.vendor)
+    }
+</script>
+
+<div>
+    <a href="https://www.jb51.net/article/43586.htm">IE - js获取客户端外网ip</a>
+    <div>
+        obj = new ActiveXObject("rcbdyctl.Setting"); 可知道如何获取到系统的信息，而不是某个文件。 比如，获得系统现在的路由表信息，网管信息，DNS信息等等。
+        <br/>
+        参考 《JavaScript语言参考》
+        <br>
+        JavaScript中ActiveXObject对象是启用并返回 Automation对象的引用。 - [只有IE支持]
+        使用方法：newObj = new ActiveXObject( servername.typename[, location])
+        其中newObj是必选项。要赋值为 ActiveXObject 的变量名。
+        servername是必选项。提供该对象的应用程序的名称。
+        typename是必选项。要创建的对象的类型或类。
+        location是可选项。创建该对象的网络服务器的名称。
+    </div>
+    <p>
+    <b onclick="setIPText()">点我获取本地IP和外网IP地址</b>
+    <span id="locationIp"></span>
+    </p>
+</div>
+<script>
+    function getLocalIPAddress() {
+        var obj = null;
+        var result = '';
+        try {
+            obj = new ActiveXObject('rcbdyctl.Setting')
+            result = obj.GetIPAddress;
+            obj = null
+        }catch (e) {
+            result = '暂无权限获取本地IP'
+        }
+        return result
+    }
+    window.setIPText = function() {
+        document.getElementById('locationIp').innerHTML = getLocalIPAddress()
+    }
+
+</script>
+<script>
+    (function () {
+        var canvas = document.createElement('canvas'),
+            gl = canvas.getContext('experimental-webgl'),
+            debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+
+        console.log(gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL));
+    })();
+
+
+
+
+</script>
+<script language="javascript"src="http://www.jb51.net/jslib/jquery/jquery.js"></script>
+<script language="javascript">
+    jQuery(function($){
+        var url = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_='+Math.random();
+        $.getJSON(url,function(data){
+            alert(data.Ip);
+            alert(data.Isp);
+        });
+    });
+</script>
+</body>
+</html>

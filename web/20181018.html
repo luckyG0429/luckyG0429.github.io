@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3D 关于渐变的那些效果</title>
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        .e-cirle{
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            transition: all 2s linear;
+            background-image: radial-gradient(400px 400px at top, red 0, #088408 50%, #000);
+        }
+        .e-cirle-m{
+            background-image: radial-gradient(100px 200px at top, red 0, #088408 50%, #000);
+            animation: setbg 12s linear infinite;
+            /*animation-direction: alternate;*/
+        }
+        @keyframes setbg{
+           0%{
+             transform: rotateZ(0deg);
+             /*background-image: repeating-radial-gradient(#FB5D00 50% , #f88808 100%);*/
+           }
+           50% {
+            transform: rotateZ(180deg);
+            /*background-image: repeating-radial-gradient(#FB5D00 30% , #f88808 60% );*/
+           }
+          100% {
+              transform: rotateZ(360deg);
+         }
+        }
+    </style>
+</head>
+<body>
+<h1>
+    css3D 关于径向渐变的那些效果
+</h1>
+ <article>
+     <p>最近在做一个项目，有个需求是显示百分比，正好是一个圆形，所以为了更生动一些，我就想把他做成3D球体。这里就要用到了radial-gradient，（很久之前用到，一直觉得没啥，挺简单的，结果今天再看，才发现里面有很多技巧和细节）</p>
+     <div>
+         <h4>1.径向渐变</h4>
+         <p>径向渐变，从中心点开始，沿着半径分布色块，直到边界处。</p>
+     </div>
+     <div>
+         <h4>2.radial-gradient</h4>
+         <p>
+          <pre>background-image: radial-gradient([[<shape>||<size>]?[at <position>,]?<color-stop>[,<color-stop>]+)</pre>
+          <br/>
+           默认shape： 是椭圆 ellipse
+         </p>
+         <p>主要有position，shape，size三个参数影响， 分别是圆心，形状和大小。</p>
+         <ul>
+             <li>position：定义圆心[x,y] = center || 50% || 100px </li>
+             <li>shape: 定于渐变的形状：circle | ellipse</li>
+             <li>size: 定义渐变的大小</li>
+             <li>重复渐变：
+                 <pre>-webkit-repeating-radial-gradient(blue 20%,green 50%)</pre>
+             </li>
+         </ul>
+     </div>
+     <div>
+         <h4>3.可实现的效果</h4>
+         <p>
+             实现一个
+         </p>
+     </div>
+     <div>
+         <h4>总结</h4>
+         <p></p>
+     </div>
+ </article>
+<div class="e-cirle"></div>
+<div class="e-cirle e-cirle-m" id="animate"></div>
+<pre>
+    文件注释
+    /**
+    * @name：文件名或模块名
+    * @description: 文件或模块描述
+    * @author: 作者名（联系方式）
+    * @update：2018-01-02
+    **/
+</pre>
+<div id="sass" class="s-text">
+    <h3>sass 使用建议</h3>
+    <p>
+        嵌套层级规定： 使用sass，less等预处理器，建议嵌套不超过3层
+    </p>
+    <p>
+        组
+    </p>
+</div>
+<a href="https://www.cnblogs.com/xiaohuochai/p/5383285.html">深入理解css的渐变</a>
+</body>
+</html>

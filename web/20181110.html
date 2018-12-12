@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array</title>
+</head>
+<body>
+<ul>
+    <li>Array - map  - 返回值：一个执行过callback的新数组</li>
+    <li>Array - forEach - 无法办法终止或者跳出forEach循环 - 返回值：undefined</li>
+    <li>Array - filter - 返回值：符合条件且结果为true新数组</li>
+    <li>Array - slice(start, end) -数组截取功能 - 返回值：一个从start 到 end（不包含end本身） 的新数组</li>
+    <li>Array - find(fn) - 返回值：第一个符合条件的元素值。
+</ul>
+<div id="map">
+     <mark class="quote">map - 返回值：会创建一个新的数组，其数组内的元素都是调用函数后的返回值结果</mark>
+     <p>
+         array.map(fn(){ return ""})
+     </p>
+</div>
+<div id="forEach">
+    <mark class="quote">forEach - 返回值：undefined，并且不可链式调用
+      如果数组的元素是基本类型， 执行forEach后，原数组本身不会被改变
+      如果数组的元素是引用类型，执行forEach后，原数组本身会发生改变
+    </mark>
+</div>
+<div id="filter">
+    <mark>
+        filter -返回值：结果为true的新数组。 -  不改变原数组。
+        为数组中的每个元素调用一次 callback 函数，并利用所有使得 callback 返回 true 或 等价于 true 的值的元素创建一个新数组。
+    </mark>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    Array.prototype.multiply = function () {
+        var _temp = this , L= this.length;
+
+        for(var i=0;i<L;i++){
+            var params = _temp[i] * _temp[i];
+            _temp.push(params)
+        }
+        return _temp
+    };
+    const a = [1,3,4,5];
+    console.log( a.multiply())
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>今日百度问题</title>
+    <style>
+        .p1, .p2{
+            position: relative;
+            background: #4384DE;
+            width: 200px;
+            height: 200px;
+            color: #fff;
+            font-weight: bolder;
+        }
+        .son1, .son2{
+            position: absolute;
+            top:30px;
+            left: 50px;
+            width: 80px;
+            height: 80px;
+            background: #ffe623;
+            color: red;
+            box-shadow: 0 0 50px #000;
+        }
+        .son2{
+            top:10px;
+            left: 10px;
+            background: red;
+            color: #fff;
+            box-shadow: 0 0 50px red;
+        }
+        table.zText{float: left;}
+        #demo{position: relative;width: 350px;height: 350px; float: left}
+        .groups{clear: both}
+        .p2{position: absolute;top:0;left: 0;width: 300px;height: 300px;background: #1637AB}
+        .p2 .son1{ left:200px}
+        .p2 .son2{left:160px;top:80px}
+        input[type='button']{
+            border: 1px solid #4B5454;
+            background: #fff;
+            padding: 4px 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>页面内嵌自定义字体 - css</li>
+    <li>移动端固定头尾布局 - css</li>
+    <li>css 页面zindex， 设置无效</li>
+    <li>vue - vue-router如何在返回时返回到上次滚动位置 </li>
+</ul>
+<div id="@font-face">
+    关于web中的字体, .woff, .eot, .svg
+    <d>
+        <dt>woff:</dt>
+        <dd>
+        woff(web开发字体格式)是一种专门为web而设计的字体格式标准，
+        实际上是对truetype/onetype等字体格式的封装，
+        每个字体文件中含有字体以及针对字体的元数据（Metadata），字体文件被压缩，以便于网络传输。</dd>
+    </d>
+    <a href="https://blog.csdn.net/qq_26445509/article/details/51013126"></a>
+    <a href="https://blog.csdn.net/u011630575/article/details/49153597">字体导入及全局设置</a>
+    <a href="https://www.cnblogs.com/zhuzhenwei918/p/6112034.html">z-index全解析</a>
+</div>
+<div id="zIndex">
+    <p>z-index</p>
+    <mark>z-index只能在元素有position属性 且 position的属性值为relative 或absolute 或fixed 时有效</mark>
+    <p>基本原理：z-index 的值可以控制定位元素在垂直于显示屏幕方向（Z轴）上的堆叠顺序（stack order），值大的元素发生重叠时，会在值小的元素上</p>
+    <ul>
+        <div class="p1">
+            p1
+            <div class="son1">son1</div>
+        </div>
+        <li>当子元素的z-index为负数时，父元素会跟子元素之间进行比较。否则不会进行对比，会当作没有z-index的情况做处理。</li>
+    </ul>
+    <div>
+        z-index可以改变元素的层级，使用这个属性前提是元素的position属性要是relative、absolute、fixed中的一种，但在某些情况下，z-index设置多大都不会起作用：
+
+        1、父标签 position属性为relative； 
+        2、问题标签无position属性（不包括static）； 
+        3、问题标签含有浮动(float)属性。
+    </div>
+</div>
+<div id="vue">
+    <a href="https://blog.csdn.net/zjl516088421/article/details/77937440"></a>
+</div>
+<div id="demo">
+    <div class="p1">
+        <div class="son1">p1 - son1</div>
+        <div class="son2">p1 - son2</div>
+    </div>
+    <div class="p2">
+        <div class="son1">p2 - son1</div>
+        <div class="son2">p2 - son2</div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    window.onload = function () {
+        listP = [];
+
+        setIndex = function (params){
+            var _num = getRange();
+            console.log(_num)
+            listP.push({name:params, value: _num})
+            setHtml()
+            let _target = $("#demo").find(params)[0]
+            $(_target).css('z-index', _num)
+        }
+
+        function getRange(){
+            let temp =   $("input[name='points']").val();
+            return temp
+        }
+
+        delIndex = function (params) {
+            console.log($("#demo").find(params)[0])
+            let _target = $("#demo").find(params)[0]
+            $(_target).css('z-index','')
+            listP = listP.filter(function (item) {
+                if(item.name === params){
+                    return false
+                }
+            })
+            setHtml()
+        }
+
+        setHtml = function(){
+            var _str = ''
+            listP.map(function (item) {
+                var _html = '<tr><td>'+item.name +'</td><td>'+ item.value + '</td></tr>';
+                _str += _html
+            })
+           $('.zText tbody').html(_str)
+        }
+    }
+</script>
+<table class="zText" border="1" width="350">
+    <thead>
+    <td>元素</td><td>z-index</td>
+    </thead>
+    <tbody></tbody>
+</table>
+<div class="groups">
+    <p>z-index:</p>
+    <input type="range" name="points" min="-10" max="10" />
+    <hr/>
+    <input type="button" value="设置p1的" onclick="setIndex('.p1')"/>
+    <input type="button" value="设置p1-son1" onclick="setIndex('.p1 .son1')"/>
+    <input type="button" value="设置p1-son2" onclick="setIndex('.p1 .son2')"/>
+    <input type="button" value="设置p2"  onclick="setIndex('.p2')"/>
+    <input type="button" value="设置p2-son1" onclick="setIndex('.p2 .son1')"/>
+    <input type="button" value="设置p2-son1" onclick="setIndex('.p2 .son2')"/>
+    <hr/>
+    <input type="button" value="清除p1的" onclick="delIndex('.p1')"/>
+    <input type="button" value="清除p1-son1" onclick="delIndex('.p1 .son1')"/>
+    <input type="button" value="清除p1-son2" onclick="delIndex('.p1 .son2')"/>
+
+    <input type="button" value="清除p2"  onclick="setIndex('.p2')"/>
+    <input type="button" value="清除p2-son1" onclick="setIndex('.p2 .son1')"/>
+    <input type="button" value="清除p2-son2" onclick="setIndex('.p2 .son2')"/>
+</div>
+</body>
+</html>

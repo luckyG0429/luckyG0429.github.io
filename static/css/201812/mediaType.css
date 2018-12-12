@@ -1,0 +1,76 @@
+@import "common.css";
+@media screen and  (max-width: 1024px) {
+    header {
+        height: 56px
+    }
+
+    aside {
+        display: none;
+    }
+
+    .cont {
+        box-sizing: border-box;
+        padding: 10px 1rem;
+        width: 100%;
+        overflow: hidden;
+        padding-bottom: 200px;
+    }
+
+    .cont:after {
+        font-size: 12px
+    }
+
+    h1{
+        padding-top: 30px
+    }
+
+    span.head-detail {
+        font-size: 12px;
+        padding-top: 4px;
+        padding-bottom: 30px
+    }
+
+    .toplist a {
+        line-height: 36px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    div.item {
+        text-align: center;
+        margin-top: 24px
+    }
+
+    div.item .innerimg {
+        width: 100%;
+    }
+
+    p {
+        color: #666;
+        font-size: 14px;
+        line-height: 2;
+        margin-top: 24px
+    }
+
+    div.item {
+        margin-top: 24px
+    }
+
+    h3 {
+        font-size: 16px;
+        margin-top: 24px
+    }
+
+    div.item span.innertxt {
+        font-size: 14px
+    }
+}
+
+@media screen and  (min-width: 1025px) {
+    .cont {
+        margin: 0 auto;
+        padding: 10px;
+        position: relative;
+        padding-bottom: 200px;
+    }
+}

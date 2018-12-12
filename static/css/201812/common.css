@@ -1,0 +1,146 @@
+/*初始化*/
+
+
+html, body, ul, h3{
+    font-family: 'Microsoft Sans Serif';
+    margin: 0 0;
+    padding: 0 0;
+}
+a{text-decoration: none;color: inherit}
+
+/*文本导航 - 仅在pc端显示*/
+aside{
+    position: fixed;
+    bottom: 4px;
+    border-right: 1px solid #d8d8d8;
+    width: 312px;
+    display: inline-block;
+    padding: 10px 15px;
+    z-index: 99;
+    background: rgba(100,100,100, .1);
+}
+
+aside ol li{
+    color: #333;font-size: 18px;line-height: 2;
+}
+
+/*头部网站导航*/
+header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 99;
+    box-shadow: 0 0 2px #666666;
+    position: sticky;
+    height: 64px;
+    box-shadow: 0 0 2px #aaa;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.toplist {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toplist a {
+    flex: 0.5;
+    color: #666;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 800;
+    height: 36px;
+    line-height: 36px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+}
+
+.toplist a:hover {
+    color: #E8BF6A
+}
+
+
+/*内容框架*/
+.cont {
+    margin: 0 auto;
+    width: 1080px;
+    padding: 10px;
+    position: relative;
+    padding-bottom: 200px;
+}
+.cont:after{
+    position: absolute;
+    bottom: 0;
+    color: #aaa;
+    left: 0;
+    right: 0;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    text-align: center;
+    content: '1.2.3.4.5678@zai18.club';
+}
+
+/*文章标题*/
+h1 {
+    color: #333333;
+    font-size: 24px;
+    font-weight: 400;
+    padding-top: 40px;
+}
+span.head-detail {
+    padding-top: 8px;
+    font-size: 14px;
+    color: #bbb;
+    padding-bottom: 40px
+}
+
+/*小标题*/
+h3 {
+    color: #444444;
+    margin-right: 20px;
+    font-size: 24px;
+    font-weight: 400;
+    border-bottom: 1px solid #d8d8d8;
+    padding: 20px 5px;
+}
+/*正文*/
+p {
+    color: #444;
+    font-size: 18px;
+    line-height: 36px;
+    margin-top: 36px
+}
+
+/*图片介绍 + 文字描述 组件样式*/
+div.item {
+    text-align: center;
+    margin-top: 36px
+}
+
+div.item .innerimg {
+    width: 70%;
+}
+
+div.item span.innertxt {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 2;
+    color: #666;
+}
+
+div.item span.innertxt i {
+    color: #fa372a
+}
+

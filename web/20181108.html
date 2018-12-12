@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>css -- px rem em</li>
+</ul>
+<div id="cssp_r_e">
+    <p>px: 像素点，对应设备的物理像素，css常用单位。绝对单位，px相对的是view device的分辨率，1px的大小与所使用设备的显示器分辨率有关。
+     像素，是画面中最小的单元色块。像素的大小是没有固定长度值的。
+        分辨率 =  画面水平方向的像素值 * 画面垂直方向的像素值。
+        分辨率可以分为两个方面：
+        1. 屏幕分辨率 - eg. 我们平常说一个屏幕的分辨率是1024*768.就是说：这个设备的水平方向的像素值是1024，垂直方向是768个像素值。（无关屏幕大小，
+        2. 图像分辨率 - eg. 一张图片的分辨率是500*200，是说这张图片放在屏幕上按1:1放大的时候。水平方向上有500个像素点，垂直方向上有200个像素点。
+        在同一设备上。图片分辨率越高，这个图片放大的时候。图片的面积就会越大，反之，分辨率越小，图片越小。
+
+        分辨率和像素是成正比的。
+        eg. 一张图片由30W个像素点组成，那这个图片的像素就是30w
+    </p>
+    <p>
+        rem: 相对于根元素的字体大小的单位。相对单位。计算规则是依赖根元素。
+        使用场景：web app的页面屏幕自适应。
+        通过设置html根元素的字体大小，来控制rem的大小。
+        <mark>如何给根元素html设定合理的font-size。</mark>
+        eg. 设计稿是 750px
+
+    </p>
+    <h3>设计稿都是以分辨率来标明尺寸的，前端在根据设计稿里各个元素的像素尺寸转换为rem时，该以哪个font-size为准呢？这需要去写才能知道</h3>
+    <p>文字流式，控件弹性， 图片等比缩放</p>
+
+
+    <table>
+        <thead>
+          宽度： 320 / 384 / 480 / 640
+        </thead>
+        <tbody>
+        <tr>
+            <td>屏幕</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p>
+        为方便计算，所以取了一个100px的font-size为参照。
+    </p>
+    <a href="https://yanhaijing.com/css/2017/09/29/principle-of-rem-layout/">rem</a>
+    <a href="http://www.cnblogs.com/lyzg/p/5058356.html">淘宝弹性布局方案lib-flexible实践</a>
+    <a href="http://www.cnblogs.com/PeunZhang/p/3407453.html">【原】移动web资源整理</a>
+</div>
+<div>
+    JavaScript复制内容到剪贴板的两种常用方法
+    <p> textarea | input  + document.execCommand()</p>
+    <b>还记得在 execCommand() 方法的定义中提到，它只能操作可编辑区域，也就是意味着除了 <input>、<textarea> 这样的输入域以外，是无法使用这个方法的。</b>
+    <p> ios 会遇到坑 - 点击复制时键盘会若隐若现， 无法复制</p>
+    <a href="https://www.jb51.net/article/135605.htm">JavaScript复制内容到剪贴板的两种常用方法</a>
+    <a href="https://www.jb51.net/article/132317.htm">js实现复制功能(多种方法集合)</a>
+</div>
+</body>
+</html>
