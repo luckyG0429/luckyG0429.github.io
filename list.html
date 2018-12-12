@@ -17,14 +17,14 @@
     </div>
 </header>
 <div class="cont">
-    <iframe id="contentlist" src="./web/demo1.html"></iframe>
+    <iframe id="contentlist" src="./web/ul.html"></iframe>
     <div class="listmeun">
         <span class="it">工作随记</span>
         <span class="it">读书笔记</span>
         <span class="it">学习理财</span>
     </div>
 </div>
-<a href="http://www.jq22.com/jquery-info16288">效果参考</a>
+<!--<a href="http://www.jq22.com/jquery-info16288">效果参考</a>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     window.onload=function(){
@@ -32,9 +32,11 @@
             _topH = parseFloat($('header').height()),
             _bottomH = parseFloat($('header').height())
         $('iframe#contentlist').height(windHeight -_topH - _bottomH - 4)
-        
-        
-        $('span.it').click(function () {
+        $('span.it').eq(0).addClass("active");
+
+
+        $('span').click(function () {
+            $(this).addClass("active").siblings('.it').removeClass("active")
             var k = this.innerHTML, urlH5;
             if(k == '读书笔记') {
                 urlH5 = './read/index.html'

@@ -23,6 +23,21 @@ div.listmeun{
     font-size: 14px;
     line-height: 2;
 }
+span.active{
+    position: relative;
+    display: inline-block;
+}
+span.active:after{
+    position: absolute;
+    width: 28px;
+    height: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -6px;
+    background: #ED1C24;
+    content: " ";
+    border-radius: 3px;
+}
 iframe{
     width: 100%;
     border: none;
