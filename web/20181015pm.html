@@ -2,14 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>定时器的那些事</title>
+    <meta name="keywords" content="前端开发,定时器, setTimeout, JavaScript, 假装我18" />
+    <meta name="viewport" content="width=device-width, initical-scale=1.0">
+    <meta name=”description” content=””>
+    <title>我想定时或者说是定点的发请求</title>
+    <link rel="stylesheet" href="../static/css/201812/mediaType.css"/>
 </head>
 <body>
-<p>
-    最近在做一个项目 --- 数据大屏， 要求: 需要实时请求接口，获取数据。
-</p>
-<p>
-   我担心的顾虑： 使用大量的setInterval合不合适？ 多个定时器同时运行会导致浏览器卡死吗？ setInterval OR setTimeout 原理？
-</p>
+<!--头部区-->
+<header class="top">
+    <div class="toplist">
+        <a href="../list.html">文字列表</a>
+        <a href="#">小站地图</a>
+        <a href="#">demo|小工具</a>
+        <a href="#">其他</a>
+    </div>
+</header>
+<div class="cont">
+    <!--标题介绍区-->
+    <h1>领导想看数据大屏</h1>
+    <span class="head-detail">&rarr; <strong>前端开发</strong> 	&gt; <strong>定时器</strong> 	&bull; <strong>setTimeout | setInterval </strong> </span>
+    <!--主文区-->
+    <div class="main">
+        <h3 id="why">项目需求</h3>
+        <p>
+            领导最近说做一下数据大屏，大概内容就是：每个产品的调用量，每天调用量，每小时调用量，以及全年的调用量，月的每时段均数等.....
+           （我：嗯嗯嗯）然后开始了自己的近一个月断断续续的编写。就在今天后端终于给了我接口（10个），然后自己琢磨了一下这些接口怎么去用之后。
+            脑子中能想到的点：浏览器不关持续待机状态，页面还要保持持续刷新数据的功能，要确保
+        </p>
+        <div class="item">
+            <!--图文介绍-->
+            <span class="innertxt">这是我现在的代码，虽然可能还有些情况没有考虑到，但是至少比之前的强很多。</span>
+            <img class="innerimg" src="../static/image/201812/20181211132803_new.png">
+        </div>
+        <h3 id="how"></h3>
+        <p></p>
+    </div>
+</div>
+<!--PC 导航区-->
+<aside>
+    <ol>
+        <li><a href="#why"></a></li>
+        <li><a href="#how">问度娘：该从哪里开始入手？</a></li>
+        <li><a href="#done">最后的选择</a></li>
+    </ol>
+</aside>
+<img src="" id="img">
+
+<script language="javascript" src="http://www.jb51.net/jslib/jquery/jquery.js"></script>
+<script>
+
+    var s = 'https://mpay.jd.com/jCashier/index?payParam=40d08e8b835665d9b9509788615245ff664b439066f924888d56599d65ca84668738bbf25d458a459a22fbe277d34b5ec39fa76d51d36af2b1a18462a97ee09e14602d1ae29e1aa11ef5ed2ccfb788e7c6e66ed49f7e3d485d7b4b2ccfd19379aa5f9b9f66e5f2c5bf84734d07b4a6e9823e14ee8ae1cf5f24da3991b9031a0cd4a1e624c8fffb780f4eb862221f7f9d6e197c770be68ae462ce3a71d037c867&appId=jrpc&flag=1';
+    console.log(s.split("&"))
+
+    window.onload= function () {
+        $("button").click(function() {
+            $.ajax({
+                url: "http://127.0.0.1/JSONP/JsonpDemo.aspx?mode=jsonp&param=" + $("#txtParam").val(),
+                dataType: "jsonp"
+            }).done(function(data) {
+                alert(data);
+            });
+        });
+    }
+</script>
 </body>
 </html>
