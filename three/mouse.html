@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var reg = new RegExp('<%>','g');
+    var reg1 = /<%[^%]%/igm;
+
+    //元字符  ( [ { ^ $ | ) ? * + .
+
+    /**
+     * 元字符 [] 来创建一个简单的类， 所谓类是指的，符合某些特征的对象，是一个
+     * **/
+    var intNum = 99, intNum2 =10
+    function addNum (a, b) {
+        var _a = a.toString(2),
+            _b = b.toString(2);
+    //    与运算 . 如果两个数不是都是1，那么直接相加就好 - 0+0=0，0+1=1，1+0=1，1+1=10
+        return _a + _b
+    }
+
+</script>
+</body>
+</html>

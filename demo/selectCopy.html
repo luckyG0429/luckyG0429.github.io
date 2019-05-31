@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initical-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js内容拷贝demo</title>
     <style>
         h3{ padding: 30px;text-align: center;line-height: 40px;font-size: 24px;text-shadow: 5px 5px 10px #f67d42}
@@ -62,6 +62,8 @@
   <script src="./js/clipboard.js"></script>
   <script src="./js/ZeroClipboard.js"></script>
   <script>
+      throw new Error("浏览器错误:")
+
        function getText(params){
             var target = document.getElementById(params);
             target.select();

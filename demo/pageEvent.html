@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="www.zai18.club">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,viewport-fit=cover,minimal-ui">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>page Event</title>
+</head>
+<body>
+
+
+<h1>Page  VisibilityState API </h1>
+<section>
+    <form>
+        <label for="yourname">name:</label>
+        <input id="yourname" name="yourname"  value=""/>
+        <button type="submit">submit</button>
+    </form>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    
+    window.onload = function () {
+
+        document.addEventListener('visibilitychange',function () {
+            let pagevisible = document.visibilityState;
+
+            if(pagevisible == 'hidden') {
+                console.log('hidden')
+                document.title = "不可见"
+            }
+            if(pagevisible == 'visible') {
+                console.log('visible')
+                document.title = "可见"
+            }
+        })
+
+
+    }
+
+    window.onbeforeunload = function () {
+        let _name = $('input#yourname').val();
+        if(!!_name) {
+            // console.log('用户输入值：' + _name)
+            // alert('用户输入值：' + _name)
+           return '用户输入值：' + _name
+        }
+    }
+
+//    当用户正在离开页面，常用的方法是监听下面三个事件： pagehide, beforeunload, unload
+
+
+//Q: 页面被系统切换，以及系统清楚浏览器进程，是无法监听到的。开发者想要指定，任何一种页面卸载情况下都会执行的代码，也是无法做到的。
+//A:   为了解决这个问题，所以出现的了page  visibility API
+// 适用范围： 不管手机还是电脑，API都可以监听到页面的可见性发生变化。
+/**
+ * 这个新的 API 的意义在于，通过监听网页的可见性，可以预判网页的卸载，还可以用来节省资源，减缓电能的消耗。
+ * 比如，一旦用户不看网页，下面这些网页行为都是可以暂停的。
+ * 1. 对服务器的轮询
+ * 2. 网页动画
+ * 3. 正在播放的音频或视频
+ *
+ *
+ * TODO: document.visibilityState
+ * document.visibilityState  =  "hidden (不可见) | visible (页面至少部分可见)| prerender (渲染中)"
+ *   ----  prerender状态只在支持"预渲染"的浏览器上才会出现
+ *   tips： 页面在卸载之前，document.visibilityState 属性一定会变成hidden
+ *    document.visibilityState属性只针对顶层窗口， 内嵌的 iframe 页面的document.visibilityState 属性由顶层窗口决定。
+ *    使用 CSS 属性隐藏<iframe>页面（比如display: none;），并不会影响内嵌页面的可见性。
+ *
+ *
+ *    document.hidden  只读属性。  (不建议使用)
+ *    document.visibilityState
+ *
+ * TODO: visibilitychange 事件
+ *   只要document.visibilityState 属性发生变化，就会触发visibilitychange 事件。
+ *   可通过监听这个事件 - document.addEventListener() | document.onvisibilitychange ，跟踪页面可见性的变化
+ *
+ *
+ * TODO: 页面卸载
+ *
+ * unload 事件在任何情况下都不必监听，
+ * beforeunload 事件只有一种适用场景，就是用户修改了表单，没有提交就离开当前页面。
+ * 另一方面，指定了这两个事件的监听函数，浏览器就不会缓存当前页面。
+**/
+
+
+
+
+</script>
+</body>
+</html>

@@ -121,6 +121,11 @@ p {
     margin-top: 36px
 }
 
+p ul li{
+    font-size: inherit;
+    line-height: inherit;
+}
+
 /*图片介绍 + 文字描述 组件样式*/
 div.item {
     text-align: center;

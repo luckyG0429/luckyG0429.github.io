@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        .box{
+            border-left: 150px solid #f67d42;
+            background: #efeeff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .box > nav {
+            color: #fff;
+            width: 150px;
+            margin-left: -150px;  //
+            float: left;
+        }
+
+        .box > section {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+  <button class="add">添加</button>
+  <div id="navlist"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    (function () {
+        var count = 0
+        $('button.add').click(function() {
+
+            var div_cont = '<div class="box"><nav>'+ count +'</nav><section>内容区</section></div>'
+            $("#navlist").append(div_cont)
+            count ++;
+        })
+    })()
+</script>
+</body>
+</html>

@@ -74,3 +74,13 @@
         padding-bottom: 200px;
     }
 }
+
+.footer {
+    padding: 80px 0;
+    line-height: 40px;
+}
+
+.footer a{
+    display: block;
+    color: #666666;
+}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>Title</title>
+    <style>
+        pre{
+            background-color: #1f0e0e80;
+        }
+        .js{
+            display: inline;
+            max-width: initial;
+            padding: 0;
+            margin: 0;
+            font-family: "sans-serif";
+            overflow: initial;
+            font-size: 20px;
+            white-space: pre;
+            background: 0 0;
+            letter-spacing: .2px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .js::before,.js::after {
+            letter-spacing: -.2em;
+            content: "\00a0";
+        }
+
+        .card{
+            width: 400px;
+            min-height: 200px;
+            border-radius: 20px;
+            background-color: #2879FF;
+            color: #eee;
+            padding: 20px;
+        }
+
+        .card + .card {
+            margin-left: 30px;
+        }
+h4,ul,li{
+    padding: 0 0;
+    margin: 0 0 ;
+    list-style: none;
+}
+
+.list{
+    padding: 100px;
+    display: flex;
+}
+        .card-title{
+            position: relative;
+        }
+
+        .card-title h4{
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            position: absolute;
+            font-size: 24px;
+            line-height: 40px;
+            display: inline-block;
+            background-color: #2879FF;
+            padding: 32px 10px;
+            width: 135px;
+            height: 135px;
+            box-sizing: border-box;
+            border-radius: 50%;
+            text-align: center;
+            vertical-align: center;
+            box-shadow: 0 2px 3px 2px rgba(0,0,0,.4);
+        }
+        .card-title p{
+            margin-top: 30px;
+            font-size: 20px;
+            line-height:32px;
+            text-align: center;
+        }
+        .card-cont {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .card-cont-btn{
+            display: flex;
+            width: 100%;
+            min-height: 40px;
+            align-content: center;
+            line-height: 40px;
+            font-size: 18px;
+        }
+
+        .card-cont-btn li{
+            flex: 1;
+            text-align: center;
+            color: #eee;
+            cursor: pointer;
+
+        }
+        .card-cont-btn li:hover{
+           font-weight: bolder;
+            color: #fff;
+            letter-spacing: .2px;
+        }
+        .card-cont-btn li + li{
+          border-left: 1px solid #ffffff;
+        }
+        .card-cont-code {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="list" >
+        <div class="card" draggable="true">
+            <div class="card-title">
+                <h4> Producer <br> 生产者 </h4>
+                <p> 它的任务是：生产Observable 所发出的值</p>
+            </div>
+            <div class="card-cont">
+                <ul class="card-cont-btn">
+                    <li>定义一个producer</li>
+                    <li>使用producer</li>
+                </ul>
+                <div class="card-cont-code">
+<pre><code class="js">
+    class Producer {
+        constructor() {
+           this.i = 0
+     }
+     nextValue () {
+              return i ++;
+     }
+      }
+  </code>
+</pre>
+                </div>
+                <div class="">
+                    <pre>
+                        <code class="js"></code>
+                    </pre>
+                </div>
+            </div>
+        </div  >
+
+
+        <div class="card" draggable="true">
+            <div class="card-title">
+                <h4>  VS </h4>
+                <p> Observable vs Promise</p>
+            </div>
+            <div class="card-cont">
+                <ul class="card-cont-btn">
+                    <li>Observable</li>
+                    <li>Promise</li>
+                </ul>
+                <div class="card-cont-code">
+<pre><code class="js">
+    class Producer {
+        constructor() {
+           this.i = 0
+     }
+     nextValue () {
+              return i ++;
+     }
+      }
+  </code>
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <code class="js">
+        stream.subscribe(fnValue, fnError, fnComplete)
+    </code>
+    <script src="https://unpkg.com/rxjs/bundles/Rx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.js"></script>
+    <script>
+        // window.onload = function () {
+        //     var observable = Rx.Observable.create(function(observer) {
+        //             observer.next('hi');
+        //             observer.next('hello');
+        //             setTimeout(()=>{
+        //                 observer.next('这是setTimeout异步操作')
+        //             },3000)
+        //         })
+        //
+        //     // 订阅这个 observable
+        //     // 只有在订阅之后，才会在流Observable 变化的时候，调用observer 提供的方法，并通知他
+        //     // 订阅之后也可以取消订阅
+        //     console.log('start')
+        //     var subscription = observable.subscribe(function (value) {
+        //         console.log(value)
+        //     })
+        //
+        //     console.log(end);
+        //
+        //     setTimeout(()=> {
+        //         subscription.unsubscribe()
+        //     },5000)
+        //
+        // }
+
+
+        // 创建一个Observable
+        /** create 方法接收一个函数，该函数有一个入参 observer 。
+
+        let stream = Rx.Observables.create((observer) => {
+            observer.next(4);
+        })
+
+        // Observer 只是一个拥有 next、error 和 complete 三个方法的普通对象而已
+
+
+        observer.next(1);
+        observer.error('some error')
+        observer.complete();
+
+    //     Prouducer 任务是  生产Observable 所发出的值
+
+        class Producer {
+            constructor() {
+                this.i = 0
+            }
+
+            nextValue () {
+                return i ++;
+            }
+        }
+
+    //    使用
+        let stream$ = Rx.Observables.create((observer)=>{
+            observer.next(Producer.nextValue())
+            observer.next(Producer.nextValue())
+        })
+        **/
+    </script>
+</div>
+</body>
+</html>

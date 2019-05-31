@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="前端开发, 单元测试, TDD, XHTML, JavaScript, 假装我18" />
+    <meta name="viewport" content="width=device-width, initical-scale=1.0">
+    <meta name=”description” content=”前端开发-用测试驱动开发入门篇”>
+    <title>前端开发：关于ES6的 class</title>
+    <link rel="stylesheet" href="../static/css/201812/mediaType.css"/>
+
+</head>
+<body>
+<div class="cont" id="cont">
+    <!--文章标题-->
+    <h1> 关于ES6的 class </h1>
+    <!--文章划分区域-->
+    <span class="head-detail">&rarr; <strong>前端开发</strong> 	&gt; <strong>Javascript</strong> 	&bull; <strong>ES6 </strong> </span>
+    <div class="main">
+        <!--小标题-->
+        <h3 id="why">Class 类和类的继承</h3>
+        <!--内容-->
+        <p>
+            <strong>class 类。</strong>
+            在这之前，ES5可以通过构造函数去生成实例对象。而ES6凯斯引入了Class 类的概念，作为对象的模板。通过Class关键字，定义类。
+            1.定义一个Class类时，内部会有一个 constructor 构造方法，在constructor 方法内的this 则代表实例对象。
+            2.定义类的方法时，不需要在方法名加function，可直接把函数放在类里面。且方法之间不需要用逗号隔开。（tips： 类的所有方法都定义在类的prototype属性上面 /
+            因此也可直接通过类的prototype对象上直接添加新方法。 eg: Person.prototype.toCry = ()=>{} / 可使用Object.assgin(Person.prototype, {
+             a(){},
+             b(){}
+            }) 一次添加多个类方法 / 类内部的所有方法是不可枚举的，也就是说通过Object.keys(Person.prototype) 无法获取。）
+            3.类的数据类型就是函数。类本身就指向构造函数。
+            4.生成实例对象。 直接使用var obj =  new ClassName()
+            5.在类的实例对象上调用方法，其实就等于调用类原型（Person.prototype）上的方法
+            6. 类必须使用 new 调用，否则会报错
+            7. 类内部可以使用属性表达式： eg：class Person{ [变量名](){}}
+            8. class类表达式。
+        </p>
+        <p>
+            <strong>constructor</strong>
+            1. 定义类时的默认方法。
+            2. 通过new命令生成实例对象时，自动回调用该方法。
+            3. constructor 方法默认返回对象实例 (this)， 也可完全指定返回另一个对象。（eg:
+               constructor () {
+                 return Object.create(null); // 返回了一个null类型的对象
+                }
+               ）
+        </p>
+        <p>
+            <strong>取值函数 getter 和 存值函数 setter</strong>
+            1. 在“类”的内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。
+            2. 存值函数和取值函数是设置在属性的 Descriptor 对象上的
+        </p>
+        <p>
+            <strong> 静态方法：</strong>
+            1. 类相当于实例的原型，所有在类中定义的方法，都会被实例继承。
+            2. 一个方法前面加 static，表示该方法不会被实例继承，而是直接通过类来调用，这种的就是：静态方法
+            3，若静态方法包含this关键字，这个this指的是类，而不是实例。
+            4. 在一个类中，静态方法可以与非静态方法重名。
+            5. 父类的静态方法，可以被子类继承。（tips: 静态方法也是keyi 从super对象上调用的）
+            静态属性
+            1. 静态属性指的是 Class 本身的属性，即Class.propName，而不是定义在实例对象（this）上的属性。
+            2. 静态属性定义在类的外部（eg. Person.country = 'china'）
+        </p>
+        <p>
+            <strong> 私有方法和私有属性</strong>
+            私有方法和私有属性，是只能在类的内部访问的方法和属性，外部不能访问。这是常见需求，有利于代码的封装，但 ES6 不提供，只能通过变通方法模拟实现。
+            1. 在命名的上加以区分 （公共 toSay(){}  私有 _to(){}）
+            2. 另一种方法就是索性将私有方法移出模块，因为模块内部的所有方法都是对外可见的。
+            3. 使用symbol值的唯一性，将私有方法的名称命名为一个symbol值，一般情况下无法获取到他们，可以达到私有方法和私有属性的效果
+            （tips： Reflect.ownKeys()依然可以拿到symbolde值的属性。）
+        </p>
+        <p>
+            <strong>类的实例</strong>
+            1. new 是从构造函数生成实例对象的命令。
+            2. Class 内部调用 new.target, 返回当前class。 （tips: ES6 为 new 命令引入了一个new.target 属性，该属性一般用在构造函数之中）
+            3. 如果构造函数不是通过new命令或Reflect.construct()调用的，new.target会返回undefined，因此这个属性可以用来确定构造函数是怎么调用的。
+            4.new.target的应用场景
+            <ul>
+             <li>可确保构造函数只能通过new命令调用</li>
+             <li>可写出不能独立使用、必须继承后才能使用的类</li>
+            </ul>
+        </p>
+
+
+        <!--图片的写法和注释-->
+        <!--<div class="item">-->
+            <!--<span class="innertxt">这是之前的代码，线上报错：<i>_now.getTime is not a function</i></span>-->
+            <!--<img  class="innerimg" src="../static/image/201812/201812111291258_old.png">-->
+        <!--</div>-->
+        <p>
+
+        </p>
+        <h3 id="how">类的继承</h3>
+        <p>
+            Class 通过 extends 关键字实现继承。
+        </p>
+        <!--<p>我想要什么类型的测试功能啊？测试分类： &hearts;单元测试，&hearts; 功能测试，&hearts;整体测试。-->
+            <!--<br/>1. 单元测试：关注应用中每个零部件的正常运转，防止后续修改影响之前的组件；-->
+            <!--<br/>2.功能测试：确保其整体表现符合预期，关注能否让用户正常使用；-->
+            <!--<br/>3.整合测试：确保单独运行正常的零部件整合到一起之后依然能正常运行。-->
+            <!--<br/>emmm....，我用单元测试吧 </p>-->
+        <!--<p>那测试工具主要能有什么功能？-->
+            <!--<br/>&rArr;有测试框架，能提供断言，生成测试结果，提供仿真测试&lceil;这个功能听起来不错 &rfloor;，生成测试覆盖率报告，提供类浏览器环境...-->
+            <!--<br/>&hearts; 嗯，我觉得可以，内心已经喜欢上面有的这些功能。</p>-->
+        <!--<p>现在流行的框架有什么呀？<br/>-->
+            <!--| Jest &rArr; FaceBook，社区不十分成熟，较多用于 React 项目(但广泛支持各种项目)，忠诚度较高，使用后弃用的概率较低 <br/>-->
+            <!--| Mocha &rArr; 社区成熟用的人多，需要较多配置，知名度最高 <br/>-->
+            <!--| Jasmine &rArr; 开箱即用(支持断言和仿真)，全局环境，比较'老',坑基本都有人踩过了，知名度最高<br/>-->
+            <!--| AVA &rArr; 异步，性能好，快照测试和断言需要三方支持<br/>-->
+            <!--| Tape &rArr; 体积最小，只提供最关键的东西，只提供最底层的 API-->
+            <!--<br/>-->
+            <!--参考资料：<a target="_blank" href="https://www.cnblogs.com/lihuanqing/p/8533552.html">前端测试框架对比</a>-->
+            <!--<a href="https://segmentfault.com/a/1190000013470485">前端单元测试</a>-->
+        <!--</p>-->
+        <!--<h3 id="done">我要用单元测试Mocha</h3>-->
+        <!--<p>我先去学习了... （一周后回来做学习记录）</p>-->
+    </div>
+    <div class="footer">
+        <a>下一篇：</a>
+        <a>上一篇：</a>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="../static/js/common.js" ></script>
+<script type="application/javascript">
+  function Person (name) {
+      if(new.target !== undefined) {
+          this.name = name
+      }else {
+          throw new Error('必须使用 new 命令生成实力')
+      }
+  }
+
+    //  正确
+    var lisi = new Person('李四');
+    // 会报错
+    var notCreatePerson = Person.call(this, '李四')
+
+
+
+    class Family {
+        constructor () {
+            this.member = '全麦'
+            this.hasChild = 'no'
+        }
+    }
+
+    class ChinaFamily extends Family {
+
+    }
+
+
+</script>
+</body>
+</html>
