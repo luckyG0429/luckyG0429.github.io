@@ -61,6 +61,10 @@ const subscribe1 = debouncedInput.subscribe(val=> {
 
 
 
+//要缓存的流  click$
+
+
+
 
 
 
