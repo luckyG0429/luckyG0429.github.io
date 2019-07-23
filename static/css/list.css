@@ -42,3 +42,32 @@ iframe{
     width: 100%;
     border: none;
 }
+
+
+
+.line{
+     min-height: 100px;
+     padding: 20px 10px;
+ }
+
+a.line-title{
+    display: inline-block;
+    width: 100%;
+    line-height: 40px;
+    color: #333;
+    font-size: 18px;
+    margin: 0 0;
+    font-family: "-webkit-pictograph";
+    border-bottom: 1px solid #efefef;
+}
+
+ul.line-ul{
+    list-style-type: decimal;
+    list-style-position: inside;
+    padding-top: 10px;
+}
+ul li.line-ul-li{
+    color: #666666;
+    font-size: 16px;
+    margin-bottom: 4px;
+}

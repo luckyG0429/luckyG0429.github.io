@@ -5,57 +5,125 @@
     <meta name="viewport" content="width=device-width, initical-scale=1.0">
     <title>文章列表</title>
     <script>
-        location.href = 'https://www.baidu.com'
+        // location.href = 'https://www.baidu.com'
     </script>
     <link rel="stylesheet" href="./static/css/201812/mediaType.css"/>
     <link rel="stylesheet" href="./static/css/list.css"/>
 </head>
 <body>
-<header class="top">
-    <div class="toplist">
-        <a href="#">文字列表</a>
-        <a href="#">小站地图</a>
-        <a href="#">demo|小工具</a>
-        <a href="#">其他</a>
-    </div>
-</header>
+
 <div class="cont">
-    <iframe id="contentlist" src="./web/ul.html"></iframe>
-    <div class="listmeun">
-        <span class="it">工作随记</span>
-        <span class="it">读书笔记</span>
-        <span class="it">学习理财</span>
+  <!--关于知识网的构建-->
+    <!--vue-->
+    <div class="line" id="p01">
+        <a  href="#p01" class="line-title">Vue</a>
+        <ul class="line-ul">
+            <li class="line-ul-li">react 虚拟DOM 是什么? 如何实现? 说一下diff算法 ?</li>
+            <li class="line-ul-li">react 虚拟DOM 是什么? 如何实现? 说一下diff算法 ?</li>
+        </ul>
+    </div>
+    <!--react-->
+    <div class="line" id="p02">
+        <a  href="#p02" class="line-title">React</a>
+        <ul class="line-ul">
+            <li class="line-ul-li">react 虚拟DOM 是什么? 如何实现? 说一下diff算法 ?</li>
+            <li class="line-ul-li">react 虚拟DOM 是什么? 如何实现? 说一下diff算法 ?</li>
+        </ul>
+    </div>
+    <!--js-->
+    <div class="line" id="p03">
+        <a  href="#p03" class="line-title">JavaScript</a>
+        <ul class="line-ul">
+            <li class="line-ul-li">面向对象如何实现? 需要复用的变量 怎么处理 ?</li>
+            <li class="line-ul-li">js 有哪些数据类型 如何判断? null 和 undefined区别 应用场景 ?</li>
+            <li class="line-ul-li">数组去重实现 ?</li>
+            <li class="line-ul-li">js浮点数运算不精确 如何解决 ?</li>
+            <li class="line-ul-li">正则表达式如何匹配一段url ?在正则表达式中有哪几种作用?</li>
+        </ul>
+    </div>
+    <!--MDN标准-->
+    <div class="line" id="p04">
+        <a  href="#p04" class="line-title">MDN标准</a>
+        <ul class="line-ul">
+            <li class="line-ul-li">react 虚拟DOM 是什么? 如何实现? 说一下diff算法 ?</li>
+            <li class="line-ul-li">react 虚拟DOM 是什么? 如何实现? 说一下diff算法 ?</li>
+        </ul>
+    </div>
+    <!--http请求-->
+    <div class="line" id="p05">
+        <a  href="#p05" class="line-title">HTTP</a>
+        <ul class="line-ul">
+            <li class="line-ul-li">http报文头部有哪些字段? 有什么意义 ?</li>
+            <li class="line-ul-li">http —— code码?</li>
+            <li class="line-ul-li">TCP三次握手的过程, get post请求的区别 ?</li>
+        </ul>
+    </div>
+    <!--html-->
+    <div class="line" id="p11">
+        <a  href="#p03" class="line-title">HTML</a>
+        <ul class="line-ul">
+            <li class="line-ul-li">DOM基础, 添加，修改元素 ?</li>
+            <li class="line-ul-li">DOM节点类型 ?</li>
+            <li class="line-ul-li">js浮点数运算不精确 如何解决 ?</li>
+        </ul>
+    </div>
+    <!--css-->
+    <div class="line" id="p06" >
+        <a  href="#p06" class="line-title">CSS</a>
+        <ul class="line-ul">
+            <li class="line-ul-li">移动端rem布局如何实现? 简述原理 ?</li>
+        </ul>
+    </div>
+
+    <!--浏览器-->
+    <div class="line" id="p07">
+        <a  href="#p07" class="line-title">浏览器</a>
+        <ul class="line-ul">
+            <li class="line-ul-li">简述从网页输入url到网页展示的过程发生了哪些事情</li>
+            <li class="line-ul-li">浏览器事件有哪些过程? 为什么一般在冒泡阶段, 而不是在捕获阶段注册监听? addEventListener 参数分别是什么 ?</li>
+            <li class="line-ul-li">静态文件的浏览器缓存如何实现?</li>
+            <li class="line-ul-li">前端跨域方案</li>
+        </ul>
+    </div>
+    <!--性能优化-->
+    <div class="line" id="p12">
+        <a  href="#p07" class="line-title">性能优化</a>
+        <ul class="line-ul">
+            <li class="line-ul-li">移动端如何实现下拉到底部 跟随移动 结束后回弹的动画?</li>
+            <li class="line-ul-li">静态文件的浏览器缓存如何实现 ?</li>
+            <li class="line-ul-li">移动端如何优化首页白屏时间过长 ?</li>
+        </ul>
+    </div>
+    <!--设计模式-->
+    <div class="line" id="p08">
+        <a  href="#p08" class="line-title">设计模式</a>
+        <ul class="line-ul">
+            <li class="line-ul-li">观察者模式实现?</li>
+        </ul>
+    </div>
+    <!--数据结构与算法-->
+    <div class="line" id="p09">
+        <a  href="#p09" class="line-title">数据结构与算法</a>
+        <ul class="line-ul">
+            <li class="line-ul-li">react 虚拟DOM 是什么? 如何实现? 说一下diff算法 ?</li>
+            <li class="line-ul-li">react 虚拟DOM 是什么? 如何实现? 说一下diff算法 ?</li>
+        </ul>
+    </div>
+
+    <!--书籍笔记-->
+    <div class="line" id="p10">
+        <a  href="#p10" class="line-title">书籍笔记</a>
+        <ul class="line-ul">
+            暂无...
+            <!--<li class="line-ul-li">暂无</li>-->
+        </ul>
     </div>
 </div>
 <!--<a href="http://www.jq22.com/jquery-info16288">效果参考</a>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     window.onload=function(){
-        location.href = 'https://www.baidu.com'
-
-        var windHeight = window.innerHeight,
-            _topH = parseFloat($('header').height()),
-            _bottomH = parseFloat($('header').height())
-        $('iframe#contentlist').height(windHeight -_topH - _bottomH - 4)
-        $('span.it').eq(0).addClass("active");
-
-        $('span').click(function () {
-            $(this).addClass("active").siblings('.it').removeClass("active")
-            var k = this.innerHTML, urlH5;
-            if(k == '读书笔记') {
-                urlH5 = './read/index.html'
-            }else if(k == '工作随记'){
-                urlH5 = './web/ul.html'
-            }else{
-                urlH5 = './self/demo.html'
-            }
-            $('iframe#contentlist').attr('src', urlH5);
-        })
     }
-
-
-
-
 </script>
 </body>
 </html>
