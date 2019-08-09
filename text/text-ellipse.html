@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>段落末尾，超出部分用省略号</title>
+</head>
+<body>
+<p>我们常常会看到这样的界面，当我们在点击搜索一个东西时候，这时候，搜索出来的结果有长有短。还有的后面会带有三个省略号...</p>
+<table>
+    <tr>
+        <td>word-wrap:break-word</td>
+        <td> 允许长单词或 URL 地址换行到下一行。允许长单词换行到下一行 - 个人感觉这个属性针对的是英文单词</td>
+    </tr>
+    <tr>
+        <td>word-break:break-all</td>
+        <td>>规定自动换行的处理方法。在恰当的断字点进行换行- 个人感觉这个属性针对的是英文单词</td>
+    </tr>
+    <tr>
+        <td>white-space:nowrap</td>
+        <td>设置如何处理元素内的空白.规定段落中的文本不进行换行</td>
+    </tr>
+</table>
+<p>关于我的做法：我主要是使用
+    <pre><code>
+    {
+      overflow:hidden;
+      text-overflow: ellipsis;
+      display：-webkit-box;
+      -webkit-line-clamp:2
+       -webkit-box-orient:vertical;
+    }
+    </code></pre>
+</p>
+
+<p>
+    -webkit-line-clamp 是webkit的私有属性。是一个不规范的属性，没有出现在css规范中
+    作用：用来限制在一个块元素显示的文本的行数。但是要实现这个效果，需要配合其他的webkit属性。
+</p>
+<div style="width: 150px;border: 1px solid #aaa">
+    <p class="text1">我要溢出。我要溢出。我要溢出。我要溢出。我要溢出。我要溢出。我要溢出。我要溢出。我要溢出。</p>
+</div>
+<style>
+    .text1{
+        height: 40px;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        display:-webkit-box;
+        -webkit-line-clamp:2;
+        -webkit-box-orient:vertical;
+    }
+</style>
+<p>apply() 调用一个具有给定this值的函数，以及作为一个数组（或者类似数组对象）提供的参数。</p>
+<script type="application/javascript">
+    /**
+     * 该函数未考虑数组去重处理
+     * **/
+    function intersect(arr0, arr1) {
+        return arr0.filter(function (item,index, arr) {
+            // indexOf 返回数组中可以找到第一个给定元素的第一个索引
+            return arr1.indexOf(item) !== -1
+        })
+    }
+    var color1 = ["100000177748", "100000177762", "100000287109", "100000584811", "100000584843", "100000626408", "100003184433", "100003743035", "100005182158", "100006300034", "100006300044"],
+        color2 =  ["100000177698", "100000287109", "100000287111", "100000584843", "100000584845", "100000626412", "100003743045", "100003743047", "100006300034"],
+        color3 =  ["100003184433", "100005182158", "100005182160", "100005182182", "100005182184"];
+    console.log(
+        intersect(
+        color1,
+        color2)
+    )
+
+    function intersectAll(){
+    //    每个函数都有一个Arguments对象实例arguments,它引用着函数的实参. 类型是： 类数组
+        // slice 返回一个新的数组对象。浅拷贝（基本类型直接复制，引用类型继续引用，不做复制）
+        var _arg = Array.prototype.slice.apply(arguments) //参数转化数组
+        var _sum = _arg.reduce(function(a,b){
+            return intersect(a,b)
+        })
+    }
+    console.log( intersectAll(color1,color3, color2))
+
+</script>
+</body>
+</html>

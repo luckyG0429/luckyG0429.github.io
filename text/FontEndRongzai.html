@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前端容灾</title>
+</head>
+<body>
+<p>Q:什么是前端容灾</p>
+<p>是指当后端接口挂了，依然可以保证页面展示信息完整。</p>
+<p>前端容灾可用手段</p>
+<ul>
+    <li>localstorage 缓冲接口数据：模块接口每次有返回时都存入localstotorage中。
+        以接口路径为key，返回数据为value。请求失败的时候，从lcoalstorage中读取上次请求成功的数据</li>
+    <li>备份一份静态数据到CDN
+        存放在CDN上，新闻接口返回失败，用户localstorage中也没有数据的时候，去CDN对应地址拉取数据渲染
+    </li>
+    <li>利用service worker的caches API做页面接口缓存
+        Service worker提供了fetch事件可供监听，
+        当页面发出请求的时候，会先过fetch方法，你可以在这里定义任何你需要的缓存策略，
+        比如请求成功后，将结果存入caches。Service worker中，你甚至可以缓存当前页面的HTML，让网站离线运行。
+    </li>
+</ul>
+<a href="http://www.imooc.com/article/36710">前端容灾</a>
+</body>
+</html>
