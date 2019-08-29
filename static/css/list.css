@@ -1,5 +1,13 @@
+body{
+    background: #EBFFDB;
+    margin: 0 0;
+    padding: 0 0;
+}
 .cont{
-  padding: 0 0;
+    padding: 0 15px;
+    background: #EBFFDB;
+    box-shadow: 0 0 2px #ccc;
+    opacity: 1;
 }
 .cont:after{
     display: none;
@@ -11,7 +19,7 @@ div.listmeun{
     width: 100%;
     height: 56px;
     background: #fff;
-    box-shadow: -1px 0 2px #aaa;
+    box-shadow: -1px 0 2px #ccc;
     display: flex;
     z-index: 99;
     justify-content: space-around;
@@ -43,31 +51,40 @@ iframe{
     border: none;
 }
 
-
-
 .line{
      min-height: 100px;
      padding: 20px 10px;
  }
 
-a.line-title{
+.line-title{
     display: inline-block;
     width: 100%;
     line-height: 40px;
-    color: #333;
-    font-size: 18px;
-    margin: 0 0;
+    color: #000;
+    font-size: 19px;
+    margin: 0 0 10px 0;
     font-family: "-webkit-pictograph";
-    border-bottom: 1px solid #efefef;
+    border-bottom: 1px solid #aaa;
 }
 
 ul.line-ul{
-    list-style-type: decimal;
-    list-style-position: inside;
+    list-style: none;
     padding-top: 10px;
 }
 ul li.line-ul-li{
-    color: #666666;
+    padding-left: 25px;
+    color: #2d2d2d;
     font-size: 16px;
+    line-height: 1.5;
+    text-indent: -25px;
     margin-bottom: 4px;
+}
+ul li.line-ul-li:hover a{
+    border-bottom: 1px solid #666666;
+}
+ul li.line-ul-li a{
+    line-height: 2;
+    color: inherit;
+    font-size: inherit;
+    text-decoration: none;
 }

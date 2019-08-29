@@ -79,6 +79,17 @@
     }
     console.log( intersectAll(color1,color3, color2))
 
+    var sum = 10;
+    var count = 0;
+    (function zks () {
+        var _temp = setInterval(function(){
+            if(count > sum) return clearInterval(_temp)
+            (function a(){
+                $("#clockLink button").trigger('click');
+                count ++
+            })()
+        },30000)
+    })()
 </script>
 </body>
 </html>

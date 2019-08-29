@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常用的数组方法</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,viewport-fit=cover,minimal-ui">
+    <link rel="stylesheet" href="../static/css/201812/mediaType.css"/>
+    <link rel="stylesheet" href="../static/css/list.css"/>
+    <link rel="stylesheet" href="../static/css/js.css"/>
+</head>
+<body>
+<div class="cont">
+    <div class="H-title">
+        <h1>Arrary - 常用的内置方法(1)</h1>
+    </div>
+    <div class="p">
+        <p>关于Array,我们常常会使用数组的内置方法，很多时候我们并不知道我们使用的方法是否合适，从以下使用方法的三个维度来判断应该使用哪个方法能够更好的实现，他们分别是
+            <b class="color1">入参</b>，
+            <b class="color1">返回值</b>，
+                <b class="color1">是否改变原数组</b>。</p>
+    </div>
+    <div class="line">
+        <p class="line-title">根据条件过滤数组值 &nwnear; filter() & find()</p>
+        <ul class="line-ul pad20">
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB">[不改变原数组] —— filter()</span>
+                <span class="line-span"> 入参：Fn —— 你可以自己定义一个函数fn，函数必须要有return true或者false</span>
+                <span class="line-span"> 返回：filter遍历整个数组，然后将结果为true的值，组成一个新的数组对象。</span>
+                <span class="line-span"> 不改变原数组</span>
+            </li>
+           <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var arr = [1,4,5,10];
+                console.log('------------------')
+                console.log('filter实现：返回大于5的数组');
+                var result = arr.filter(function(i){
+                         return i>5
+                });
+                 console.log(result);
+                 </code>
+            </pre>
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB">[不改变原数组] ——  find() </span>
+                <span class="line-span"> 入参：Fn —— 你可以自己定义一个函数fn，函数必须要有return true或者false</span>
+                <span class="line-span"> 返回：返回的是满足提供函数要求的第一个元素。否则返回undefined</span>
+                <span class="line-span"> 不改变原数组</span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var arr = [1,4,5,10];
+                console.log('------------------')
+                console.log('find实现：返回大于5的数组');
+                var result = arr.filter(function(i){
+                         return i>=5
+                });
+                 console.log(result);
+                 </code>
+            </pre>
+        </ul>
+    </div>
+    <div>
+        <p class="line-title">数组截取  &nwnear; slice() & splice() </p>
+        <ul class="line-ul pad20">
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB">[不改变原数组] —— slice() - 浅拷贝</span>
+                <span class="line-span">   入参: 数组下标的开始位置和结束位置</span>
+                <span class="line-span">  返回: 一个新的数组对象</span>
+                <span class="line-span"> 不改变原数组</span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var arr = ['ni','zhen','hao',10, 'kan'];
+                console.log('------------------');
+                console.log('slice实现：截取数组，从第2个开始，截取3个');
+                var result = arr.slice(1, 4)
+                 console.log(result);
+                 </code>
+            </pre>
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB"> [改变原数组] —— splice() </span>
+                <span class="line-span">  入参：数组下标，删除元素个数，你想添加的值</span>
+                <span class="line-span">  返回： 数组对象。 如果是删除，返回的被删除的值的数组。如果是添加或者在原地进行修改，返回的是空数组。</span>
+                <span class="line-span">  改变原数组</span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var arr = ['ni','zhen','hao',10, 'kan'];
+                console.log('------------------');
+                console.log('splice实现：截取数组，从第2个开始，截取3个');
+                var result = arr.splice(1, 3)
+                 console.log(result);
+                 </code>
+            </pre>
+        </ul>
+    </div>
+    <div>
+        <p class="line-title">合并数组  &nwnear; concat()  </p>
+        <ul class="line-ul pad20">
+            <li class="line-ul-li ">
+            <span class="line-span-title fontB">[不改变原数组] ——  concat()</span>
+            <span class="line-span">入参： 数组列表</span>
+            <span class="line-span"> 返回： 一个新的数组</span>
+            <span class="line-span">  不改变原数组</span>
+        </li>
+
+        <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var arr = ['ni','zhen','hao',10, 'kan'],
+                   arr1 = [10,11,13],
+                   arr2 = ["你","好呀", "!"];
+                console.log('------------------');
+                console.log('contact实现：多个数组合并');
+                var result = arr.concat(arr1, arr2)
+                 console.log(result);
+                 </code>
+            </pre>
+        </ul>
+    </div>
+    <div>
+        <p class="line-title">遍历数组  &nwnear;  forEach() & map() </p>
+        <ul class="line-ul pad20">
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB">[不改变原数组] —— forEach()</span>
+                <span class="line-span">入参：Fn</span>
+                <span class="line-span"> 返回： 空</span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var arr = [1,2,4,8,16];
+                console.log('------------------');
+                var _new = [];
+                console.log('map实现：一个新的数组，每个元素都翻倍');
+                var result = arr.forEach(function(i){ _new.push(i*i);return i *i}) //入参函数有返回值也不起作用。
+                console.log(result);
+                console.log(arr)
+                console.log(_new);
+                 </code>
+            </pre>
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB">[不改变原数组] —— map()</span>
+                <span class="line-span">入参：Fn 必须有return 返回值。否则执行默认值返回undefined</span>
+                <span class="line-span"> 返回： 执行过入参函数返回的新数组</span>
+                <span class="line-span">  不改变原数组</span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var arr = [1,2,4,8,16];
+                console.log('------------------');
+                console.log('map实现：一个新的数组，每个元素都翻倍');
+                var result = arr.map(function(i){return i *i})
+                console.log(result);
+                 </code>
+            </pre>
+        </ul>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        $('span.copy').on('click', function () {
+            var _code = $(this).parent().find('code').html()
+            var target = $(this).parent().find('input[type=text]');
+            console.log(_code)
+            target.val(_code)
+            target.select();
+            document.execCommand("Copy")
+        })
+    })
+</script>
+</body>
+</html>
