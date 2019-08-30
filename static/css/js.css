@@ -52,9 +52,36 @@ span.line-span-title{
     line-height: 2;
 }
 
-span.line-span{
+span.line-span,span.line-span-p{
     display: block;
 }
+
+.line-span-p{
+    text-indent: 0;
+}
+
+.i-Q{
+    margin-top: 30px;
+    display: block;
+    line-height: 2;
+    font-style: normal;
+    position: relative;
+    padding: 40px 10px 20px;
+    border-left: 2px solid #52b304;
+    border-top: 2px solid #52b304;
+}
+.i-Q::after{
+    position: absolute;
+    content: '我遇到的问题';
+    top: 0;
+    left: 0;
+    width: 150px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 3px 3px 0px 1px #245200;
+    background: #52b304;
+}
+
 
 .pad10{
     padding-left: 10px;

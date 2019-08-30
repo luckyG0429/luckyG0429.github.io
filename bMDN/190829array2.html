@@ -17,8 +17,9 @@
     <div class="p">
         <p>接着上面的那一篇，这本篇中提到的内置方法，都是在数组自身上做变更。比起上一篇的那些方法使用，我觉得更像是一个人在自己身上做实验，无论用哪种方法都会显现在自己身上。
        所以<b class="color1">本篇中的提到所有方法都会改变数组本身</b>。在Vue 框架中也有明确指出，这些方法的使用会触发数导致视图改变.</p>
+        <p>本章中提到的内置方法：push() shift() pop() unshift() splice() sort() reverse()</p>
     </div>
-    <div class="p">数组的增删改</div>
+
     <div class="line">
         <p class="line-title">添加元素：push() | shift()</p>
         <ul class="line-ul pad10">
@@ -93,58 +94,45 @@
                 console.log(arr);
                  </code>
             </pre>
-            <li class="line-ul-li ">
-                <span class="line-span-title fontB"> [改变原数组] —— splice() </span>
-                <span class="line-span">  入参：数组下标，删除元素个数，你想添加的值</span>
-                <span class="line-span">  返回： 数组对象。 如果是删除，返回的被删除的值的数组。如果是添加或者在原地进行修改，返回的是空数组。</span>
-                <span class="line-span">  改变原数组</span>
-            </li>
-            <pre>
-                <span class="copy">复制</span><input type="text">
-               <code>var arr = ['ni','zhen','hao',10, 'kan'];
-                console.log('------------------');
-                console.log('splice实现：截取数组，从第2个开始，截取3个');
-                var result = arr.splice(1, 3)
-                 console.log(result);
-                 </code>
-            </pre>
         </ul>
     </div>
     <div>
-        <p class="line-title">遍历数组  &nwnear;  forEach() & map() </p>
+        <p class="line-title">元素排序</p>
         <ul class="line-ul pad10">
             <li class="line-ul-li ">
-                <span class="line-span-title fontB">[不改变原数组] —— forEach()</span>
+                <span class="line-span-title fontB">[可制定排序规则] —— sort()</span>
                 <span class="line-span">入参：Fn</span>
-                <span class="line-span"> 返回： 空</span>
+                <span class="line-span"> 返回： 数组</span>
             </li>
-            <pre>
-                <span class="copy">复制</span><input type="text">
-               <code>var arr = [1,2,4,8,16];
-                console.log('------------------');
-                var _new = [];
-                console.log('map实现：一个新的数组，每个元素都翻倍');
-                var result = arr.forEach(function(i){ _new.push(i*i);return i *i}) //入参函数有返回值也不起作用。
-                console.log(result);
-                console.log(arr)
-                console.log(_new);
-                 </code>
-            </pre>
             <li class="line-ul-li ">
-                <span class="line-span-title fontB">[不改变原数组] —— map()</span>
-                <span class="line-span">入参：Fn 必须有return 返回值。否则执行默认值返回undefined</span>
-                <span class="line-span"> 返回： 执行过入参函数返回的新数组</span>
-                <span class="line-span">  不改变原数组</span>
+                <span class="line-span-title fontB">[将数组中元素的位置颠倒] —— reverse()</span>
+                <span class="line-span">入参：空</span>
             </li>
             <pre>
                 <span class="copy">复制</span><input type="text">
-               <code>var arr = [1,2,4,8,16];
-                console.log('------------------');
-                console.log('map实现：一个新的数组，每个元素都翻倍');
-                var result = arr.map(function(i){return i *i})
-                console.log(result);
+               <code>
+                console.log('-------请时刻记得数组是引用类型-----------');
+                var arr = [{id:10,name:'zai'},{id:1, name:'ac'},{id:81, name:'ac'},{id:3,name:'pre'}];
+                console.log('将数组以升序排序');
+                var _upArr = Object.assign([],arr.sort(function(i1,i2){
+                  return  i2.id - i1.id
+                }))
+                console.log(_upArr);
+                console.log('给数组改为降序');
+                var _downArr = arr.reverse();
+                console.log(_downArr)
                  </code>
             </pre>
+            <i class="i-Q">
+                刚刚在写上面的测试代码时，自己做完升序降序后都用console.log(arr)输出打印结果。结果发现两次的输出是一样的。以为是reverse没起作用。就单独做了reverse也是对的。那是哪里出错了？？
+                <span class="line-span-title">TIPS:</span>
+                <span class="line-span-p">1.数组是引用类型，引用类型的数据是存放在堆内存中的 【引用说明好文：<a href="https://www.cnblogs.com/ljuyi/p/6100071.html">js——引用类型和基本类型</a>】</span>
+                <span class="line-span-p">2.像平时"arr1 = arr2"的这种复制给另一个对象的过程其实是把该对象的地址复制给了另一个对象变量，两个指针都指向同一个对象，所以若其中一个修改了，则另一个也会改变。</span>
+                <span class="line-span-p">
+                所以我用console.log(arr)，因为传入参数arr是引用类型，所以指向的同一个对象。而我们对arr使用的方法也都会修改这个对象，因此打印结果相同的。为了正常显示，用Object.assign对arr的sort结果进行了拷贝。
+                这样就可以直观的看到使用sort后的结果。
+                </span>
+            </i>
         </ul>
     </div>
 </div>
