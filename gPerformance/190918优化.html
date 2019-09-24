@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面 - 优化渲染性能</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,viewport-fit=cover,minimal-ui">
+    <link rel="stylesheet" href="../static/css/201812/mediaType.css"/>
+    <link rel="stylesheet" href="../static/css/list.css"/>
+    <link rel="stylesheet" href="../static/css/js.css"/>
+</head>
+<body>
+<div class="cont">
+    <div class="H-title">
+        <h1>页面 - 优化渲染性能</h1>
+    </div>
+    <div class="p">
+        <p>如果你想优化你的应用程序，你需要关注五个主要方面。以下是您可以控制的方面：
+       <b class="color1">本篇中的提到所有方法都会改变数组本身</b>。在Vue 框架中也有明确指出，这些方法的使用会触发数导致视图改变.</p>
+        <p>本章中提到的内置方法：push() shift() pop() unshift() splice() sort() reverse()</p>
+    </div>
+
+    <div class="line">
+        <p class="line-title">添加元素：push() | shift()</p>
+        <ul class="line-ul pad10">
+            <li class="line-ul-li">
+                <span class="line-span-title fontB">arr.push(param1, ... , paramN)</span>
+                <span class="line-span">我想调用Dog的bark()方法，但是我却得到一个错误。为什么？</span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>function Dog(name) { this.name=name; }
+                Dog.bark = function () { console.log(this.name + ' says woof'); }
+                var fido = new Dog('fido');
+                //fido.bark();
+                Dog.bark();
+                 </code>
+            </pre>
+            <li class="line-ul-li">
+                <span class="line-span">
+                    这道题主要考察的是对象的静态方法 与 实例方法的差异。1.静态方法是定义在类（Dog）上面，所以直接通过类就可以调用。
+                    2.实例方法是定义在原型链上的，实例方法是需要创建实例对象进行访问的
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div class="line">
+            <p class="line-title">删除元素：shift() | pop()</p>
+            <ul class="line-ul pad10">
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB">[删除数组中的第一个元素] ——  shift() </span>
+                <span class="line-span"> 入参：空</span>
+                <span class="line-span"> 返回：删除元素的值</span>
+            </li>
+
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>function isBig(thing) {
+                    if(thing == 0 || thing ==1 || thing==2){ return false; }
+                    return true
+                   }
+                   isBig(1) //false
+                   isBig([2]) //false
+                   isBig([3]) //true
+                 </code>
+            </pre>
+                <li class="line-ul-li pad10">
+                    <span class="line-span"> 【双等号】 关于两个类型不同，进行 == 比较。</span>
+                    <span class="line-span"> 如果一个是对象，另一个是数值或字符串，把对象转换成基础类型的值再比较。（tips：对象转换成基本类型，利用它的toString |valueOf ）</span>
+                </li>
+        </ul>
+    </div>
+    <div>
+        <p class="line-title">splice() - 能删除，能新增，也能修改 </p>
+        <ul class="line-ul pad10">
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB">[删除] —— arr.splice(下标值，要删除的元素个数) </span>
+                <span class="line-span-title fontB">[新增] —— arr.splice(下标值，0, 添加元素值param1, param2, ...) </span>
+                <span class="line-span-title fontB">[修改] —— arr.splice(下标值，1, 修改值) </span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var arr = [1,'ni','10','hao',100, 'yeah', '!'];
+                console.log('------------------');
+                console.log('原数组：len='+ arr.length +';arr= [' + arr.toString() + ']');
+                console.log('1.实现从10开始删除3个');
+                arr.splice(2, 3);
+                console.log(arr);
+                console.log('2.实现倒数第二个改为hello');
+                arr.splice(arr.length-2, 1, 'hello');
+                console.log(arr);
+                console.log('3.实现第二个元素后面加个值today');
+                arr.splice(2, 0, 'today');
+                console.log(arr);
+                 </code>
+            </pre>
+        </ul>
+    </div>
+    <div>
+        <p class="line-title">元素排序</p>
+        <ul class="line-ul pad10">
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB">[可制定排序规则] —— sort()</span>
+                <span class="line-span">入参：Fn</span>
+                <span class="line-span"> 返回： 数组</span>
+            </li>
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB">[将数组中元素的位置颠倒] —— reverse()</span>
+                <span class="line-span">入参：空</span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>
+                console.log('-------请时刻记得数组是引用类型-----------');
+                var arr = [{id:10,name:'zai'},{id:1, name:'ac'},{id:81, name:'ac'},{id:3,name:'pre'}];
+                console.log('将数组以升序排序');
+                var _upArr = Object.assign([],arr.sort(function(i1,i2){
+                  return  i2.id - i1.id
+                }))
+                console.log(_upArr);
+                console.log('给数组改为降序');
+                var _downArr = arr.reverse();
+                console.log(_downArr)
+                 </code>
+            </pre>
+            <i class="i-Q">
+                刚刚在写上面的测试代码时，自己做完升序降序后都用console.log(arr)输出打印结果。结果发现两次的输出是一样的。以为是reverse没起作用。就单独做了reverse也是对的。那是哪里出错了？？
+                <span class="line-span-title">TIPS:</span>
+                <span class="line-span-p">1.数组是引用类型，引用类型的数据是存放在堆内存中的 【引用说明好文：<a href="https://www.cnblogs.com/ljuyi/p/6100071.html">js——引用类型和基本类型</a>】</span>
+                <span class="line-span-p">2.像平时"arr1 = arr2"的这种复制给另一个对象的过程其实是把该对象的地址复制给了另一个对象变量，两个指针都指向同一个对象，所以若其中一个修改了，则另一个也会改变。</span>
+                <span class="line-span-p">
+                所以我用console.log(arr)，因为传入参数arr是引用类型，所以指向的同一个对象。而我们对arr使用的方法也都会修改这个对象，因此打印结果相同的。为了正常显示，用Object.assign对arr的sort结果进行了拷贝。
+                这样就可以直观的看到使用sort后的结果。
+                </span>
+            </i>
+        </ul>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        $('span.copy').on('click', function () {
+            var _code = $(this).parent().find('code').html()
+            var target = $(this).parent().find('input[type=text]');
+            console.log(_code)
+            target.val(_code)
+            target.select();
+            document.execCommand("Copy")
+        })
+    })
+</script>
+</body>
+</html>

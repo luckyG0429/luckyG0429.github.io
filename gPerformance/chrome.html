@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chrome 浏览器的工作原理 </title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,viewport-fit=cover,minimal-ui">
+    <link rel="stylesheet" href="../static/css/201812/mediaType.css"/>
+    <link rel="stylesheet" href="../static/css/list.css"/>
+    <link rel="stylesheet" href="../static/css/js.css"/>
+</head>
+<body>
+<div class="cont">
+    <div class="H-title">
+        <h1>chrome 浏览器的工作原理</h1>
+    </div>
+    <div class="p">
+        <p>2008.9.2 是chrome 浏览器诞生的日子。谷歌决定做自己的浏览器，为此特别开发了底层引擎 V8。作为一个每天和浏览器打交道的前端工程师，了解chrome浏览器的</p>
+    </div>
+    <div class="line">
+        <p class="line-title">在</p>
+        <ul class="line-ul pad10">
+            <li class="line-ul-li">
+                <span class="line-span">项目中使用的第三方依赖库的一个合集</span>
+                <span class="line-span">
+                 在驱动浏览器之前需要掌握的另一个概念是进程和线程。
+                    进程可以理解为一个应用的执行程序，而线程存在于进程里，他执行的是进程里的一小部分。
+                </span>
+                <span>
+                    当你启动一个应用时，就会创建一个进程。这个程序可能会创建线程帮他工作，这是一个可选择项。
+                </span>
+            </li>
+            <li class="line-ul-li pad10">
+                <span class="line-span-title fontB">过大的原因</span>
+                <span class="line-span">在main.js导入第三方库太多了。webpack合并js时生成了vendor.js</span>
+                <span class="line-span"> 返回：删除元素的值</span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var arr = [1,4,5,10];
+                console.log('------------------')
+                console.log('find实现：返回大于5的数组');
+                var result = arr.filter(function(i){
+                         return i>=5
+                });
+                 console.log(result);
+                 </code>
+            </pre>
+        </ul>
+    </div>
+</body>
+</html>
