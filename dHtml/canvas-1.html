@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水印背景</title>
+    <style>
+        #wrap{
+            width: 500px;
+            height: 500px;
+            background-color: #f67d42;
+        }
+    </style>
+</head>
+<body>
+<canvas id="wrap"></canvas>
+<script type="application/javascript">
+    function drawReact(){
+        var ctx = canvas.getContext('2d')
+        canvas.width = 500
+        canvas.height= 500
+        ctx.fillStyle = 'red'
+        ctx.fillRect(20,20,100,100);
+        ctx.strokeRect(30,30, 50,50);
+        ctx.clearRect(70,70,60,60)
+    }
+    var canvas = document.getElementById('wrap');
+    if(canvas.getContext){
+        // drawReact()
+        drawTriangle()
+    }
+
+
+    //draw 三角形
+    function drawTriangle(){
+        var ctx= canvas.getContext('2d');
+        ctx.beginPath()
+        ctx.moveTo(75,75);
+        ctx.lineTo(150,25);
+        ctx.lineTo(150,125);
+        ctx.closePath();
+        ctx.fill()
+    }
+    // addWaterMark('水印文字')
+</script>
+</body>
+</html>

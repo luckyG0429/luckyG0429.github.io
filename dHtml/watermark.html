@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水印背景</title>
+</head>
+<body>
+<div class="warp">
+    <div class="title">我是标题</div>
+    <div class="content">
+        我是内容我是内容我是内容我是内容我是内容我是内容
+        我是内容我是内容我是内容我是内容我是内容我是内容
+        我是内容我是内容我是内容我是内容我是内容我是内容
+        我是内容我是内容我是内容我是内容我是内容我是内容
+        我是内容我是内容我是内容我是内容我是内容我是内容
+        我是内容我是内容我是内容我是内容我是内容我是内容
+        我是内容我是内容我是内容我是内容我是内容我是内容
+        我是内容我是内容我是内容我是内容我是内容我是内容
+        我是内容我是内容我是内容我是内容我是内容我是内容
+        我是内容我是内容我是内容我是内容我是内容我是内容
+        我是内容我是内容我是内容我是内容我是内容我是内容
+        我是内容我是内容我是内容我是内容我是内容我是内容
+    </div>
+    <span style="display:inline-block;
+    width:250px;height: 150px;
+    line-height: 150px;
+    transform:rotate(30deg);
+    text-align: center">水印</span>
+</div>
+<script type="application/javascript">
+    function addWaterMark(str){
+        var canvas = document.createElement('canvas');
+        var body = document.body;
+        body.appendChild(canvas)
+        canvas.style.display='none'
+        canvas.width = 200;
+        canvas.height = 150
+        var context = canvas.getContext('2d')
+        context.rotate(-25*Math.PI/180)
+        context.font ='18px Microsoft JhengHei'; //水印字体大小
+        context.fillStyle = 'rgba(0,250,4,.9)'; //水印的颜色
+        context.textAlign = 'center'
+        context.textBaseline = 'Middle'; //画布里面文字的垂直位置
+        context.fillText(str,canvas.width/3,canvas.height/2); //画布里面文字的间距比例
+        body.style.backgroundImage="url("+canvas.toDataURL("image/png")+")"; //把画布插入到body中
+    }
+    addWaterMark('水印文字')
+</script>
+</body>
+</html>
