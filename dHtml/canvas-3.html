@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用图片</title>
+    <link rel="stylesheet" href="../static/css/unuse.css">
+</head>
+<body>
+<img class="bgpng" src="../demo/image/aa.jpg" >
+<canvas id="cont" style="background-color: lightblue">
+ tips: 引入图片到canvas里面需要两步骤：
+    1. 获取一个htmlImageElement的对象 或者是另一个canvas元素的引用作为源。也可以直接同意提供一个URL的方式来使用图片
+    2. 使用drawImage将图片绘制到画布上。
+</canvas>
+<script src="https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.js"></script>
+<script type="application/javascript">
+    let c= 10;
+    console.log(c)
+
+
+    let canvas,
+        ctx,
+        W_Num = document.body.clientWidth,
+        H_Num = document.body.clientHeight;
+
+
+    init()
+    function init(){
+        canvas = document.getElementById('cont')
+        ctx = canvas.getContext('2d')
+        canvas.width = W_Num
+        canvas.height = H_Num
+        drawGrid()
+        drawImage()
+    }
+
+
+    function drawGrid(num=20){
+        for(var i =0;i<W_Num; ){
+            drawLine(0,W_Num,i,i)
+            i+=num
+            drawLine(i,i,0,H_Num)
+        }
+    }
+
+    function drawLine(x1,x2,y1,y2){
+        ctx.lineWidth ='1px'
+        ctx.strokeStyle = '#eee'
+        ctx.beginPath()
+        ctx.moveTo(x1,y1);
+        ctx.lineTo(x2,y2);
+        ctx.stroke()
+        ctx.closePath()
+    }
+
+    function drawImage(){
+        let _img = document.getElementsByTagName('img')[0]
+        //图像绘制的位置.
+        let centerX = Math.ceil(W_Num/60) * 20,
+            centerY = 10 * 20;
+        // 网格和图像相吻合
+        let _iw = _img.width%20,
+            _ih =  _img.height%20;
+
+
+        ctx.drawImage(_img,0,0,_img.width-_iw, _img.height- _ih, centerX,centerY, _img.width-_iw, _img.height- _ih)
+
+    }
+
+    function creatImg(){
+        var img = new Image()
+        img.scr= '图片源'
+    //    图片预加载策略
+        img.onload = function () {
+        //    等待图片执行完毕，
+        }
+    }
+
+</script>
+</body>
+</html>
