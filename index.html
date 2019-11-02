@@ -22,151 +22,96 @@
     <meta name="description" content="个人博客，我是一名前端工程师，在某个公司就职，平时会学习理财，和写读书笔记。希望自己能勿忘初心，一路前行">
     <meta name="keywords" content="前端知识积累,理财,笔记"/>
     <style>
-        html,body{
-            padding: 0 0;
+        body,html, p{
             margin: 0 0;
-            color: #666;
-            overflow-x: hidden;
-        }
-        .cont{
-            position: absolute;
-            top: 150px;
-            left: 50%;
-            transform: translateX(-50%);
-            margin: 0 auto;
-            z-index: 10;
-            font-size: 18px;
-        }
-        article{
-            width: 800px;
-            padding: 20px 20px 20px 150px;
-            margin:0 0;
-            min-height: 320px;
-            background-color: #fff;
-            box-sizing: border-box;
-            box-shadow: 0 0 5px #ddd;
-            user-select: none;
-        }
-        h1{
-            font-family: "-webkit-pictograph";
-            font-size: 60px;
-            margin: 0px;
-        }
-        p{
-            margin-top: 30px;
-            margin-bottom: 0;
-            line-height: 1.5;
-            font-size: 18px;
-            color: #666;
-        }
-        p:first-line{
-           text-indent: 2rem;
-        }
-        .images{
-            position: absolute;
-            top: -50px;
-            left: 28%;
-            margin-left: -50%;
-            width: 300px;
-            height: 400px;
-            box-sizing: border-box;
-            border: 5px double #888;
-            box-shadow: inset 0 0 2px #ddd;
-            background-size: cover;
-            z-index: 9;
-        }
-        .img, .inner{
-            margin-left: 25px;
-            margin-top: 25px;
-            width: 100%;
-            height: 100%;
-            background-image: url("./static/image/index/bg.jpg");
-            background-size: cover;
-        }
-        a{
-            width: 100%;
-            height: 30px;
-            margin-left: -100px;
-            text-decoration: none;
-            color: #888;
-            padding:  0 40px;
-            cursor: pointer;
-        }
-        a:after, a:before{
-            content: "|";
-            margin-left:20px;
-            margin-right: 20px;
-            color: #ddd;
-            z-index: 99;
+            padding: 0 0;
+            color: #555;
         }
 
-        @media screen  and (max-width: 1080px) {
-            .cont{
-                width: 100%;
-                height: 100%;
-                background-color: #f67d42;
-                transform: none;
-                position: relative;
+        body{
+            background-image: url("static/image/bg.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: all linear;
+        }
+        body, .cont{
+            width: 100%;
+            min-height: 100vh;
+        }
+        .cont{display: flex;flex-direction: column;justify-content: center;align-items: center}
+        .center{
+            background: rgba(136, 173, 187, 0.3);
+            border-radius: 4px;
+            box-shadow: 2px -1px 8px 4px rgba(0, 72, 106, 0.56)
+        }
+        .title{
+
+            line-height:1.2;
+            font-size:.12rem;
+            color: #222;
+            padding: 20px 50px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(235, 233, 219, 0.69);
+        }
+
+        .list{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding: .15rem 0 ;
+        }
+        .list span{
+            padding: 0  .25rem;
+            color: #222;
+            font-size:.12rem;
+        }
+
+        .list span + span{
+            border-left: 1px solid rgba(235, 233, 219, 0.69);
+        }
+
+        @media screen and (max-width: 750px) {
+            body{
+                background-image: url("static/image/bgs03.png");
             }
-            .images{
-                display: block;
-                margin: 0 auto;
-                top: 0;
-                right: 0;
-                float: right;
-                position: relative;
-                width: 170px;
-                height: 220px;
+            .center{
+                background:rgba(57, 122, 189, 0.17);
             }
-            .images .img, .inner{
-                width: 115%;
-                height:  115%;
-                margin-left: -55px;
-                margin-top: 35px;
-                z-index: 99;
-            }
-            article{
-                margin-top: 150px;
-                min-height: 320px;
-                padding: 20px;
-                background: transparent;
-                box-shadow: none;
-            }
-            p{
-                font-size: 16px;
-                margin-top: 24px;
-            }
-            a{
-                margin: 0 0;
-                display: block;
-                width: 100%;
-                height: 40px;
-                box-sizing: border-box;
-                line-height: 40px;
-                font-size: 16px;
-                text-align: center;
-            }
+
         }
     </style>
 </head>
 <body>
-
 <div class="cont">
-    <div class="images">
-        <div class="img">
+    <div class="center">
+        <div class="title">我时常跟自己说：你来介绍一下自己。</div>
+        <div class="list">
+            <span><a href="works.html">工作</a></span>
+            <span><a href="text.html">文字</a></span>
+            <span><a href="plans.html">计划</a></span>
         </div>
     </div>
-    <article>
-        <h1>Zai18</h1>
-        <p>致给自己：</p>
-        <p>以自己的应用场景去架构自己的知识世界</p>
-        <p>全当是对自己的一种成长记录，和鼓励。</p>
-        <p>日常记录，沉淀一下自己的所学所得所想</p>
-        <p>2018-10-16</p>
-    </article>
 </div>
-<a href="./list.html">文章列表</a>
+</div>
+<script type="application/javascript">
+function sethtmlfont(){
+    var wid = window.innerWidth || 750;
+    if(wid > 750) {
+        document.body.style.fontSize = '140px'
+        document.documentElement.style.fontSize = '140px'
+        return;
+    }
+    var _k = wid / 7.5
+    document.body.style.fontSize = _k + 'px'
+    document.documentElement.style.fontSize = _k + 'px'
+}
+sethtmlfont();
 
-</div>
+window.onresize = function (ev) {
+    sethtmlfont();
+}
+
+</script>
 </body>
 </html>
