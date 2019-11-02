@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initical-scale=1.0">
+    <meta charset="UTF-8">
+    <title>水印背景</title>
+    <style>
+        body{
+            margin: 0 0;
+            padding: 0 0;
+        }
+        #wrap{
+            width:100vw;
+            height: 100vh;
+            background-color: #effdef;
+        }
+        .btnlist{
+            position: fixed;
+            width: 100px;
+            z-index:9;
+            bottom:50%;
+            left: 0;
+        }
+    </style>
+</head>
+<body onmousedown="onmousedown">
+<ul class="btnlist">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<canvas id="wrap"></canvas>
+<script>
+
+      var circlelist = []
+    // window.onload = function () {
+        var wid = document.body.clientWidth;
+        var hig = document.body.clientHeight;
+        var ctx,canvas, num=20
+        inint();
+        function inint(){
+            canvas = document.getElementById('wrap');
+            ctx = canvas.getContext('2d');
+            canvas.width = wid
+            canvas.height = hig
+            drawGrid(num)
+        }
+
+
+
+        function drawGrid(num=30){
+            for(var i =0;i<wid; ){
+                drawLine(0,wid,i,i)
+                i+=num
+                drawLine(i,i,0,hig)
+            }
+        }
+
+        function drawLine(x1,x2,y1,y2){
+            ctx.strokeStyle = "#999";
+            ctx.lineWidth ='1px'
+            ctx.beginPath();
+            ctx.moveTo(x1,y1);
+            ctx.lineTo(x2,y2);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        function drawCricle(x,y){
+            drawlineTOline(x,y)
+            ctx.fillStyle = '#333'
+            ctx.beginPath();
+            ctx.arc(x,y,num/2,0, Math.PI*2, true)
+            ctx.strokeStyle = "blue";
+            ctx.closePath();
+            ctx.fill()
+        }
+
+        function drawlineTOline(x,y) {
+            if(circlelist.length){
+                ctx.strokeStyle = '#666'
+                ctx.lineWidth = '10'
+                ctx.beginPath();
+                var _l = circlelist.length
+                var c =  circlelist[_l-1].split('_')
+                ctx.moveTo(c[0] * 1,c[1]*1);
+                ctx.lineTo(x,y)
+                ctx.stroke()
+            }
+
+            circlelist.push(x+'_'+y)
+        }
+
+        function onmousedown(event){
+            let x =setCricleCenter(event.clientX,num)
+            let y= setCricleCenter(event.clientY,num)
+            drawCricle(x,y)
+        }
+
+        function setCricleCenter(num,baseN){
+             //获取到余数
+            var _c=num%baseN
+            return  num + (baseN/2 - _c)
+        }
+
+      document.addEventListener('mousedown',onmousedown)
+
+
+    // }
+</script>
+</body>

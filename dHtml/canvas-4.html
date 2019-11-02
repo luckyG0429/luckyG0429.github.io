@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>位移</title>
+    <link rel="stylesheet" href="../static/css/unuse.css">
+</head>
+<body>
+<img class="bgpng" src="../demo/image/aa.jpg" >
+<canvas id="cont" style="background-color: lightblue">
+    tips: 在做变形之前先保存状态是一个良好的习惯
+</canvas>
+<script src="https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.js"></script>
+<script type="application/javascript">
+    let canvas,
+        ctx,
+        W_Num = document.body.clientWidth,
+        H_Num = document.body.clientHeight;
+
+
+    init()
+    function init(){
+        canvas = document.getElementById('cont')
+        ctx = canvas.getContext('2d')
+        canvas.width = W_Num
+        canvas.height = H_Num
+        drawGrid();
+        // drawReact()
+        // drawImage()
+        drawCricle()
+        ctx.save()
+        // aniamtion()
+    }
+
+
+    function drawGrid(num=20){
+        for(var i =0;i<W_Num; ){
+            drawLine(0,W_Num,i,i)
+            i+=num
+            drawLine(i,i,0,H_Num)
+        }
+    }
+
+    function drawLine(x1,x2,y1,y2){
+        ctx.lineWidth ='1px'
+        ctx.strokeStyle = '#eee'
+        ctx.beginPath()
+        ctx.moveTo(x1,y1);
+        ctx.lineTo(x2,y2);
+        ctx.stroke()
+        ctx.closePath()
+    }
+
+    function drawImage(){
+        let _img = document.getElementsByTagName('img')[0]
+        //图像绘制的位置.
+        let centerX = Math.ceil(W_Num/60) * 20,
+            centerY = 10 * 20;
+        // 网格和图像相吻合
+        let _iw = _img.width%20,
+            _ih =  _img.height%20;
+
+
+        ctx.drawImage(_img,0,0,_img.width-_iw, _img.height- _ih, centerX,centerY, _img.width-_iw, _img.height- _ih)
+    }
+
+
+    function drawReact(){
+        let base = 60
+        for (let k = 0; k<3; k++){
+            for (let i = 0; i<3;i++){
+                ctx.save();
+                ctx.translate(base*i, k*base)
+                ctx.fillStyle = `rgba(${i*51 + k*50},255,${255-i*51- k*30})`
+                ctx.fillRect(0,0,40,40);
+                ctx.restore();
+            }
+        }
+
+    }
+
+
+
+    function drawCricle(){
+        ctx.translate(W_Num/2, H_Num/2)
+
+        for(let k=1;k<10;k++){
+            ctx.save()
+            let cir = 20;
+            ctx.fillStyle = `rgb(${k*21},${255-k*21},255)`
+            for(let i=0;i<6*k;i++){
+                ctx.rotate(Math.PI*2/(6*k))
+                ctx.beginPath();
+                ctx.arc(0,k*50,10,0,Math.PI*2,false)
+                ctx.fill()
+            }
+            ctx.restore()
+        }
+    }
+
+    function aniamtion (){
+        ctx.translate(1,1)
+        window.requestAnimationFrame(aniamtion)
+    }
+
+</script>
+</body>
+</html>

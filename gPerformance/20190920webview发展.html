@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面 - 优化渲染性能</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,viewport-fit=cover,minimal-ui">
+    <link rel="stylesheet" href="../static/css/201812/mediaType.css"/>
+    <link rel="stylesheet" href="../static/css/list.css"/>
+    <link rel="stylesheet" href="../static/css/js.css"/>
+</head>
+<body>
+<div class="cont">
+    <div class="H-title">
+        <h1>页面 - 优化渲染性能</h1>
+    </div>
+    <div class="p">
+        <p>如果你想优化你的应用程序，你需要关注五个主要方面。以下是您可以控制的方面：
+            <b class="color1">本篇中的提到所有方法都会改变数组本身</b>。在Vue 框架中也有明确指出，这些方法的使用会触发数导致视图改变.</p>
+        <p>本章中提到的内置方法：push() shift() pop() unshift() splice() sort() reverse()</p>
+    </div>
+    <div class="line">
+        <p class="line-title">Weex/React-Native 跨平台技术</p>
+        <ul class="line-ul pad10">
+            <li class="line-ul-li">
+                <span class="line-span">项目中使用的第三方依赖库的一个合集</span>
+                <span class="line-span">
+                    这种技术最大化的复用前端得生态和Native的生态体系，把Native View的高性能组件积累输出给前端的技术体系。
+                    此方案和浏览器的最大区别在于Script的执行和Native View的渲染体系。
+                </span>
+            </li>
+            <li class="line-ul-li pad10">
+                <span class="line-span-title fontB">过大的原因</span>
+                <span class="line-span">在main.js导入第三方库太多了。webpack合并js时生成了vendor.js</span>
+                <span class="line-span"> 返回：删除元素的值</span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var arr = [1,4,5,10];
+                console.log('------------------')
+                console.log('find实现：返回大于5的数组');
+                var result = arr.filter(function(i){
+                         return i>=5
+                });
+                 console.log(result);
+                 </code>
+            </pre>
+        </ul>
+    </div>
+</body>
+</html>
