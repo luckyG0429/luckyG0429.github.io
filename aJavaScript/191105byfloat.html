@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题 - js浮点数运算不精确 如何解决？</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,viewport-fit=cover,minimal-ui">
+    <link rel="stylesheet" href="../static/css/201812/mediaType.css"/>
+    <link rel="stylesheet" href="../static/css/list.css"/>
+    <link rel="stylesheet" href="../static/css/js.css"/>
+</head>
+<body>
+<div class="cont">
+    <div class="H-title">
+        <h1>HOW - js浮点数运算不精确 如何解决？</h1>
+    </div>
+    <div class="p">
+        <p>
+            关于JS中的浮点数计算，计算结果精度问题一直以来都是被大家所诟病的。
+        </p>
+    </div>
+
+    <div class="line">
+        <p class="line-title">我们常遇到的浮点数计算</p>
+        <ul class="line-ul pad10">
+            <li class="line-ul-li">
+                <span class="line-span-title fontB">原因：
+                    计算机使用的是二进制01进行运算。
+                </span>
+                <span class="line-span">
+                    一个十进制数值转为二进制数值，需要通过下面的计算。<br/>
+                    1.整数部分，“除2取余法”；<br/>
+                    2.小数部分，“乘2取整，顺序排列”。直到积中的小数部分为0或者达到所要求的精度为止<br/>
+                    按照计算机标准，存储浮点数值格式是32位。所以当我们进行计算的浮点数无法以32位二进制（0.6）表示时，计算机在进行计算时就会出现精度问题。
+                </span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>consoe.log(0.1 + 0.2);  //result: 0.30000000000000004
+              console.log(0.1 - 0.2); //result: 0.1
+              console.log(0.1 *0.2); //result: 0.020000000000000004
+              console.log(0.1/0.2); //result: 2
+                 </code>
+            </pre>
+            <li class="line-ul-li">
+                <span class="line-span">
+
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <p class="line-title">解决方法1: toFixed() </p>
+        <ul class="line-ul pad10">
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB">
+                    toFixed(n) 四舍五入。入参n:表示小数点的位数。
+                </span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var sum = 0.28 + 0.55
+                console.log(sum);
+                console.log(sum.toFixed(2));
+                var sum2 = 0.23+ 0.7
+                console.log(sum2);
+                console.log(sum2.toFixed(2));
+                 </code>
+            </pre>
+        </ul>
+    </div>
+    <div>
+        <p class="line-title">解决办法2：先变整数再计算</p>
+        <ul class="line-ul pad10">
+            <li class="line-ul-li ">
+                <span class="line-span-title fontB">先将计算的数乘10的幂编程整数，然后计算完后，在除以同等倍数获取结果。</span>
+                <span class="line-span">这里我把编写的加运算变为了Math的静态方法。可以看下。</span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>
+                console.log('-------先将运算数变为整数-----------');
+                Math.add = function(a,b){
+                   var _a = a.toString(), _b=b.toString();
+                   var alen = _a.indexOf('.')==-1?'0':_a.split('.')[1].length,
+                      blen = _b.indexOf('.')==-1?'0':_b.split('.')[1].length;
+                   var _num = Math.pow(10, alen > blen?alen:blen);
+                   return (a*_num + b*_num)/ _num
+                   }
+                 console.log(0.23 + 0.7)
+                 console.log(Math.add(0.23, 0.7))
+                 </code>
+            </pre>
+            <i class="i-Q">
+                关于浮点数在计算机里的存储方式 - 以32位为例,短浮点型float,按照按照 IEEE754 标准,在计算机里的存储格式如下：
+                <span class="line-span-title">TIPS:</span>
+                <span class="line-span-p">
+                    1.数符S：表示浮点数的符号，占1位，0—正数、1—负数；<br>
+                    2.尾数M：23位，原码纯小数表示，小数点在尾数域的最前面；<br>
+                    3.阶码E：8 位，采用有偏移值的移码表示；<br>
+                </span>
+                <span class="line-span-p">
+                    在实际中有些小数转为二进制时，都会无限循环下去，（例如： 0.51 = 0.1000001111000000011110000111100001111...）无法用32位二进制数完整表示，所以导致计算机在进行浮点数的二进制截取时， 会出错。进而当两个浮点数，都需要进行二进制截取时，
+                    就会出现精度问题
+                </span>
+            </i>
+        </ul>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        $('span.copy').on('click', function () {
+            var _code = $(this).parent().find('code').html()
+            var target = $(this).parent().find('input[type=text]');
+            console.log(_code)
+            target.val(_code)
+            target.select();
+            document.execCommand("Copy")
+        })
+    })
+</script>
+</body>
+</html>
