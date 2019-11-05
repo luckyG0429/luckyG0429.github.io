@@ -72,19 +72,34 @@ ul.line-ul{
     padding-top: 10px;
 }
 ul li.line-ul-li{
-    padding-left: 25px;
+    padding-left: 15px;
     color: #2d2d2d;
     font-size: 16px;
     line-height: 1.5;
-    text-indent: -25px;
+    text-indent: -10px;
     margin-bottom: 4px;
 }
 ul li.line-ul-li:hover a{
     border-bottom: 1px solid #666666;
 }
+
 ul li.line-ul-li a{
     line-height: 2;
     color: inherit;
     font-size: inherit;
     text-decoration: none;
+}
+
+@media screen and (max-width: 640px){
+    ul li.line-ul-li {
+        padding-left: 10px;
+        font-size: 14px;
+        text-indent: -7px;
+    }
+    ul li.line-ul-li a{
+        line-height: 1.8;
+        color: inherit;
+        font-size: inherit;
+        text-decoration: none;
+    }
 }

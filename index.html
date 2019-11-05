@@ -21,106 +21,15 @@
     <link rel="Shortcut Icon" href="favicon.ico">
     <meta name="description" content="个人博客，我是一名前端工程师，在某个公司就职，平时会学习理财，和写读书笔记。希望自己能勿忘初心，一路前行">
     <meta name="keywords" content="前端知识积累,理财,笔记"/>
-    <style>
-        body,html, p{
-            margin: 0 0;
-            padding: 0 0;
-            color: #555;
-        }
-
-       html, body{
-            width: 100%;
-            height: 100%;
-        }
-        .cont{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-        }
-
-        div.line{
-            text-indent: 28px;
-            position: relative;
-            padding:0 14px;
-            background-image: linear-gradient(top,#fff 0%, #fff 99%, #333 99%, #333 100%);
-            background-image: -webkit-linear-gradient(top,#fff 0%, #fff 99%, #333 99%, #333 100%);
-            width: 362px;
-            min-height: 180px;
-            line-height: 42px;
-            background-size: 100% 40px ;
-        }
-
-        div.line::after{
-            position: absolute;
-            bottom: 10px;
-            right: 14px;
-            content: "--L.yang";
-        }
-
-        a.abtn{
-            position: absolute;
-            bottom: -40px;
-            display: inline-block;
-            text-align: center;
-            left: 50%;
-            transform: translate(-50%,50%);
-            border: 1px solid #aaa;
-            color: #666;
-            height: 42px;
-            line-height: 42px;
-            text-decoration: none;
-            border-radius: 24px;
-            padding: 0 30px;
-            text-indent: 0;
-        }
-
-        @media screen and (max-width: 640px){
-            div.line{
-                position: relative;
-                padding:0 14px;
-                background-image: linear-gradient(top,#fff 0%, #fff 99%, #333 99%, #333 100%);
-                background-image: -webkit-linear-gradient(top,#fff 0%, #fff 99%, #333 99%, #333 100%);
-                width: 72%;
-                min-height: 180px;
-                line-height: 42px;
-                background-size: 100% 40px ;
-            }
-
-        }
-
-
-
-    </style>
+    <link rel="stylesheet" href="static/css/index.css">
 </head>
 <body>
 <div class="cont">
     <div class="line">
-        你好，我是一名前端工程师。这是我的博客，主要是日常记录一些自己收集的博客文章和工作中的笔记。希望能帮到你～
+        你好，我是一名前端工程师。这是我的博客，主要是日常收集的博客文章和工作笔记。希望能帮到你～
         <a class="abtn" href="list.html">前往列表</a>
     </div>
 </div>
 </div>
-<script type="application/javascript">
-function sethtmlfont(){
-    var wid = window.innerWidth || 750;
-    if(wid > 750) {
-        document.body.style.fontSize = '140px'
-        document.documentElement.style.fontSize = '140px'
-        return;
-    }
-    var _k = wid / 7.5
-    document.body.style.fontSize = _k + 'px'
-    document.documentElement.style.fontSize = _k + 'px'
-}
-// sethtmlfont();
-
-window.onresize = function (ev) {
-    // sethtmlfont();
-}
-
-</script>
 </body>
 </html>
