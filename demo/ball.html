@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>地球和经纬度</title>
+    <style>
+        body,html {
+            margin: 0 0;
+            padding: 0 0;
+            overflow: hidden;
+        }
+        canvas{
+            background-color: #e1e1e1;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cvs"></canvas>
+<script>
+    window.onload = function(){
+        var canvas = document.getElementById('cvs'),
+            clientWid = window.clientWidth,
+            clientHeight = window.clientHeight,
+            ctx = canvas.getContext('2d')
+
+
+        function init(){
+            ctx.width = clientWid
+            ctx.height = clientHeight
+            drawCricle()
+        }
+
+
+        function drawCricle(){
+            ctx.save()
+            ctx.fillStyle = "rgb(200,0,0)";
+            ctx.fillRect (10, 10, 55, 50);
+        }
+    }
+
+</script>
+</body>
+</html>
