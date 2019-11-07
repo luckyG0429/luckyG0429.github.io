@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于ES6的symbol</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,viewport-fit=cover,minimal-ui">
+    <link rel="stylesheet" href="../static/css/201812/mediaType.css"/>
+    <link rel="stylesheet" href="../static/css/list.css"/>
+    <link rel="stylesheet" href="../static/css/js.css"/>
+</head>
+<body>
+<div class="cont">
+    <div class="H-title">
+        <h1>关于ES6的symbol</h1>
+    </div>
+    <div class="p">
+        <p>
+            关于JS中新增的基础数据类型：Symbol。Symbol()函数会返回symbol类型的值，该类型具有静态属性和静态方法。
+        </p>
+    </div>
+
+    <div class="line">
+        <p class="line-title">symbol 它能干什么？</p>
+        <ul class="line-ul pad10">
+            <li class="line-ul-li">
+                <span class="line-span">  1. 唯一值： 每个用Symbol()返回的值都是唯一的.
+                    <br/>2. 用做对象属性的键。<br/>
+                </span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var s01 = Symbol();
+                   var s02 = Symbol("china");
+                    var s03 = Symbol("china");
+                    console.log(typeof s02); //result：symbol
+                   console.log(s02 === s03); //因为Symbol的唯一性，result：false
+                 </code>
+            </pre>
+            <li class="line-ul-li">
+                <span class="line-span">
+
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <p class="line-title">当你用symbol时，要注意什么？</p>
+        <ul class="line-ul pad10">
+            <li class="line-ul-li ">
+                 <span class="line-span">
+                    1. 每个Symbol实例都是唯一的。<br/>
+                    2. 不能使用new Symbol(),因为不支持<br/>
+                    3. 如果想全局共享。如跨域跨文件， 使用 Symbol.for() 方法和  Symbol.keyFor() 方法从全局的symbol注册表设置和取得symbol。<br/>
+                    4. Object.getOwnPropertySymbols() 方法让你在查找一个给定对象的符号属性时返回一个 symbol类型 的数组。 <br/>
+                     5. 使用for...in 遍历对象属性时，symbol属性无法遍历到，需要使用 Object.getOwnPropertySymbols()<br>
+                     6. 当一个对象中含有symbol属性时，用JSON.stringify()时,会把symbol属性给忽略掉。
+                </span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>var syn = Symbol();
+                   var des = Symbol("this is description")
+                   var obj = {
+                      demo: "201901",
+                      [des]: "this is my first demo"
+                   }
+                    console.log(obj)
+                    console.log(JSON.stringify(obj))
+                 </code>
+            </pre>
+        </ul>
+    </div>
+    <div>
+        <p class="line-title">关于TypeScript中的Symbols</p>
+        <ul class="line-ul pad10">
+            <li class="line-ul-li ">
+                <span class="line-span">这里的symbols和 ES6中的 symbol 应该是一样的。Symbols有很多内的方法，来表示语言内部的一些行为。 </span>
+            </li>
+            <pre>
+                <span class="copy">复制</span><input type="text">
+               <code>console.log('-------先将运算数变为整数-----------');
+
+                 </code>
+            </pre>
+            <i class="i-Q">
+                <!--关于浮点数在计算机里的存储方式 - 以32位为例,短浮点型float,按照按照 IEEE754 标准,在计算机里的存储格式如下：-->
+                <span class="line-span-title">TIPS:无</span>
+                <span class="line-span-p">
+                    <!--1.数符S：表示浮点数的符号，占1位，0—正数、1—负数；<br>-->
+                    <!--2.尾数M：23位，原码纯小数表示，小数点在尾数域的最前面；<br>-->
+                    <!--3.阶码E：8 位，采用有偏移值的移码表示；<br>-->
+                </span>
+                <span class="line-span-p">
+                    <!--在实际中有些小数转为二进制时，都会无限循环下去，（例如： 0.51 = 0.1000001111000000011110000111100001111...）无法用32位二进制数完整表示，所以导致计算机在进行浮点数的二进制截取时， 会出错。进而当两个浮点数，都需要进行二进制截取时，-->
+                    <!--就会出现精度问题-->
+                </span>
+            </i>
+        </ul>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        $('span.copy').on('click', function () {
+            var _code = $(this).parent().find('code').html()
+            var target = $(this).parent().find('input[type=text]');
+            console.log(_code)
+            target.val(_code)
+            target.select();
+            document.execCommand("Copy")
+        })
+    })
+</script>
+</body>
+</html>

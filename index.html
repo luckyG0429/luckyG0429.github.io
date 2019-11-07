@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="static/css/index.css">
 </head>
 <body>
+<div class="bot" id="user"></div>
 <div class="cont">
     <div class="line">
         你好，我是一名前端工程师。这是我的博客，主要是日常收集的博客文章和工作笔记。希望能帮到你～
@@ -31,5 +32,27 @@
     </div>
 </div>
 </div>
+<script type="application/javascript">
+   function  getUserAgent(){
+        let _agent = navigator.userAgent.toLowerCase();
+        let result = {
+            window: _agent.indexOf('windows') > -1,
+            ios: _agent.indexOf('applewebkit') > -1,
+            IE:  _agent.indexOf('trident') > -1,
+            Android: _agent.indexOf('android ') > -1,
+            iphone: _agent.indexOf('applewebkit') > -1,
+        }
+        console.log(_agent)
+        console.log(result)
+
+        //    PC
+
+        //    ipad
+        //    手机
+
+       document.getElementById('user').innerText ="你所用的浏览设备内核: [ " +  _agent + " ]"
+    }
+   getUserAgent()
+</script>
 </body>
 </html>
