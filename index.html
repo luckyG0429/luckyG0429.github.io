@@ -36,21 +36,24 @@
    function  getUserAgent(){
         let _agent = navigator.userAgent.toLowerCase();
         let result = {
-            window: _agent.indexOf('windows') > -1,
-            ios: _agent.indexOf('applewebkit') > -1,
-            IE:  _agent.indexOf('trident') > -1,
+            window: _agent.indexOf('windows') > -1,  //系统
+            safari: _agent.indexOf('os') > -1,  //系统
+            IE:  _agent.indexOf('trident') > -1, //系统
             Android: _agent.indexOf('android ') > -1,
-            iphone: _agent.indexOf('applewebkit') > -1,
+            iphone: _agent.indexOf('iphone') > -1,
+            mobile:  _agent.indexOf('mobile') > -1, // 手机
+            micromessenger:  _agent.indexOf('micromessenger') > -1, //微信
         }
-        console.log(_agent)
-        console.log(result)
+       //    PC
+       if((result.window || result.safari || result.IE ) && !result.mobile ) {
+           return false
+       }
+       //    手机
+       if(result.mobile && (result.Android || result.iphone || result.micromessenger)) {
+           return true
+       }
 
-        //    PC
-
-        //    ipad
-        //    手机
-
-       document.getElementById('user').innerText ="你所用的浏览设备内核: [ " +  _agent + " ]"
+       // document.getElementById('user').innerText ="你所用的浏览设备内核: [ " +  _agent + " ]"
     }
    getUserAgent()
 </script>
