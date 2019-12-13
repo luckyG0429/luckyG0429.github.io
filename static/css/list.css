@@ -1,10 +1,10 @@
 body{
-    background: #EBFFDB;
+    background: #ebffdba3;
     margin: 0 0;
     padding: 0 0;
 }
 .cont{
-    background: #EBFFDB;
+    background: #ebffdba3;
     box-shadow: 0 0 2px #ccc;
     opacity: 1;
 }
