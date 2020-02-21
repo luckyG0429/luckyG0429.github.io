@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="application/javascript" src="digui.js">
+
+</script>
+<script type="module">
+    var name = "liuyang"
+    console.log(this)
+</script>
+<script type="module">
+    /**
+     * 使用module后，脚本会拥有自己的顶级作用域（词法环境），不会干扰window。
+     * 当使用module后，两个模块的变量彼此不可见。
+     * module 模块中的this的顶级值是  undefined
+     *
+     * **/
+    console.log('module :' + name)
+</script>
+</body>
+</html>
