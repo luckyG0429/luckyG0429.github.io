@@ -8,9 +8,26 @@
     <link rel="stylesheet" href="../static/css/201812/mediaType.css"/>
     <link rel="stylesheet" href="../static/css/list.css"/>
     <link rel="stylesheet" href="../static/css/js.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+    <script src='https://unpkg.com/mocha/mocha.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+    <script>
+    let assert = chai.assert;
+    mocha.setup('bdd');
+    </script>
 </head>
 <body>
-<div class="cont">
+<!--函数本身-->
+<script src="fn.js"></script>
+<!--我们需要引入测试样例-->
+<script src="testofBDD.js"></script>
+<!--这个元素内包含测试的结果-->
+<div id="mocha"></div>
+<script class="mocha-exec">
+    mocha.run();
+</script>
+
+<div class="cont" style="display: none">
     <div class="H-title">
         <h1>关于module-- 【模块】</h1>
     </div>
